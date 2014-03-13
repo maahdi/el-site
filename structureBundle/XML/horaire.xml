@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<horaires>
+    <jour>
+        <name>Lundi</name>
+        <matin debut="9:30" fin="12:00"/>
+        <aprem debut="14:30" fin="19:00"/>
+    </jour>
+    <jour>
+        <name>Mardi</name>
+        <matin debut="9:30" fin="12:00"/>
+        <aprem debut="14:30" fin="19:00"/>
+    </jour>
+    <jour>
+        <name>Mercredi</name>
+        <matin debut="9:30" fin="12:00"/>
+        <aprem debut="14:30" fin="19:00"/>
+    </jour>
+    <jour>
+        <name>Jeudi</name>
+        <matin debut="9:30" fin="12:00"/>
+        <aprem debut="14:30" fin="19:00"/>
+    </jour>
+    <jour>
+        <name>Vendredi</name>
+        <matin debut="9:30" fin="12:00"/>
+        <aprem debut="14:30" fin="19:00"/>
+    </jour>
+    <jour>
+        <name>Samedi</name>
+        <matin debut="9:30" fin="12:00"/>
+        <aprem debut="14:30" fin="19:00"/>
+    </jour>
+    <!--<jour>-->
+        <!--<name>Dimanche</name>-->
+        <!--<matin debut="0:00" fin="00:00"/>-->
+        <!--<aprem debut="00:00" fin="00:00"/>-->
+    <!--</jour>-->
+</horaires>

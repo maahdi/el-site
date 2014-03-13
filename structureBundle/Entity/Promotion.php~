@@ -1,0 +1,52 @@
+<?php
+namespace EuroLiterie\structureBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
+
+/**
+ *@ORM\Entity(repositoryClass="PromotionRepo")
+ *@ORM\Table(name="promotions")
+ */
+class Promotion implements JsonSerializable
+{
+    /**
+     *@ORM\Id
+     *@ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /**
+     *@ORM\Column(type="integer")
+     */
+    protected $promoId;
+
+    /**
+     *@ORM\Column(type="string")
+     */
+    protected $tag;
+
+    /**
+     *@ORM\Column(type="text")
+     */
+    protected $PromoDesc;
+
+    /**
+     *@ORM\Column(type="date")
+     */
+    protected $dateDebut;
+
+    /**
+     *@ORM\Column(type="date")
+     */
+    protected $dateFin;
+
+    /**
+     *@ORM\Column(type="decimal", scale=2)
+     */
+    protected $promoPrix;
+
+    public function jsonSerialize()
+    {
+    }
+}

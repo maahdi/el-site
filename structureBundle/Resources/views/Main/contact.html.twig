@@ -1,0 +1,66 @@
+{%extends 'EuroLiteriestructureBundle:Main:layout.html.twig'%}
+{%block body%}
+
+<div class="row">
+    <div class="articles small-12 columns">
+        {%for article in articles%}
+            {%if article.tagName == 'map' %}
+            <div id="googleMap" class="article border-article marge">
+                <input type="hidden" name="id" value="{{article.id}}"/>
+                <article class="art-titre"><h1>{{article.artTitle}}</h1></article>
+                <section class="map art-content not-editable map_canvas">
+                    <embed align="center"><iframe width="100%" height="340" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.fr/maps?f=q&amp;source=s_q&amp;hl=fr&amp;geocode=+&amp;q=euro+literie&amp;ie=UTF8&amp;hq=euro+literie&amp;hnear=Hagetmau,+Landes,+Aquitaine&amp;ll=43.908143,-0.469564&amp;spn=0.08326,0.209255&amp;t=m&amp;z=13&amp;iwloc=A&amp;cid=8401589398713095024&amp;output=embed"></iframe><br /><small><a href="https://maps.google.fr/maps?f=q&amp;source=embed&amp;hl=fr&amp;geocode=+&amp;q=euro+literie&amp;ie=UTF8&amp;hq=euro+literie&amp;hnear=Hagetmau,+Landes,+Aquitaine&amp;ll=43.908143,-0.469564&amp;spn=0.08326,0.209255&amp;t=m&amp;z=13&amp;iwloc=A&amp;cid=8401589398713095024" style="color:#0000FF;text-align:left">Agrandir le plan</a></small></embed>
+                </section>
+            </div>
+            {%elseif article.tagName == 'adresse_courrier' or article.tagName == 'adresse_phone'%}
+            <div class="article art-adresse border-article marge">
+                <input type="hidden" name="id" value="{{article.id}}"/>
+                {%if article.tagname == 'adresse_courrier'%}
+                    <article class="art-content courrier">{{ article.artContent | raw}}</article>
+                {%elseif article.tagName == 'adresse_phone'%}
+                    <article class="art-content phone">{{ article.artContent | raw }}</article>
+                {%endif%}
+            </div>
+            {%elseif article.tagName == 'horaire'%}
+              <div id="horaires" class="article border-article marge">
+                <input type="hidden" name="id" value="{{article.id}}"/>
+                <article class="art-titre"><h1>{{article.artTitle}}</h1></article>
+                <article class="art-content">{{ article.artContent | raw }}</article>
+                <article>
+                    <table>
+                    {%for horaire in horaires%}
+                    <tr>
+                        <td class="jour">{{ horaire.jour}}</td>
+                        <td>{{ horaire.getMatin('debut')}} à {{ horaire.getMatin('fin')}} - {{ horaire.getAprem('debut')}} à {{ horaire.getAprem('fin')}}</td>
+                    </tr>
+                    {%endfor%}
+                    </table>
+                </article>
+            </div>
+            {%elseif article.tagName == 'formulaire'%}
+              <div id="email" class="article border-article marge">
+                <input type="hidden" name="id" value="{{article.id}}"/>
+                <article class="art-titre"><h1>{{article.artTitle}}</h1></article>
+                <article class="art-content">{{ article.artContent | raw }}</article>
+                <form class="form-email" method="post" {{ form_enctype(form) }}>
+                    {{ form_widget(form) }}
+                    <input type="submit" class="btn btn-primary" />
+                </form>
+            </div>
+            {%endif%}
+        {%endfor%}
+    </div>
+</div>
+{%if envoie is defined and envoie%}
+    <script>
+        var d = '<div><p>Votre email a bien était envoyé !</p><p>Nous répondrons dans les meilleurs délais.</p></div>';
+        $(d).dialog({
+            buttons : {
+                "close" : function(){
+                    $(this).dialog('close');
+                }
+            }
+        });
+    </script>
+{%endif%}
+{%endblock%}

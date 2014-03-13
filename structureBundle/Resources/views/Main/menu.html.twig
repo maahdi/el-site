@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="small-12 columns">
+        <div id="lol">
+            <figure class="left" id="logo"><a href="{{path('literie_accueil')}}"><img src="{{ asset('bundles/EuroLiteriestructure/images/logo.png')}}"/></a></figure>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        <ul class="literie-menu">
+            {%if menus is defined%}
+                {%for menu in menus%}
+                    {%if  menu.path == 'literie_marques'%}
+                        <li><a href="{{path(menu.path)}}#Epeda">{{ menu.name }}</a>
+                    {%else%}
+                        <li><a href="{{path(menu.path)}}">{{ menu.name }}</a>
+                    {%endif%}
+                    {%if menu.sousMenu is defined%}
+                        <ul>
+                        {%for ss in menu.sousMenu%}
+                        <li><a href="{{ path(menu.path)}}#{{ss.path}}" onClick="scroll({{ss.path}})">{{ ss.name}}</a></li>
+                        {%endfor%}
+                        </ul></li>
+                    {%else%}
+                        </li>
+                    {%endif%}
+                {%endfor%}
+                <li><a href="{{path('admin_literie')}}">Admin</a></li>
+                <li><a href="{{path('decoadmin_literie')}}">Deco Admin</a></li>
+            {%endif%}
+        </ul>
+    </div>  
+</div>
+

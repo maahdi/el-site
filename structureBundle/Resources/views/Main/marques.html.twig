@@ -1,0 +1,35 @@
+{% extends 'EuroLiteriestructureBundle:Main:layout.html.twig' %}
+{%block body%}
+<div class="row">
+    <div class="articles small-12 columns">
+        {%for article in articles%}
+            <article class="article">
+                <input type="hidden" name="id" value="{{article.id}}"/>
+                <article class="art-titre"><h1>{{article.artTitle}}</h1></article>
+                <article class="art-content">{{article.artContent | raw }}</article>
+            </article>
+        {%endfor%}
+        <div class="marques small-12 columns">
+            <div class="marque horizontal">
+                {%for marque in marques%}
+                <section id="{{marque.NomMarque}}">
+                        <h3><a href="#{{marque.NomMarque}}">{{marque.nomMarque}}</a></h3>
+                    <article>
+                        <figure class="marque-img"><img src="{{asset('bundles/EuroLiteriestructure/images/marques/'~marque.pngUrl)}}"></img></figure>
+                        <section class="content">
+                            <article class="marque-content">
+                                <p>{{marque.content | raw}}</p></article>
+                            <article class="marque-link">
+                                <a href="http://{{marque.marqueLien}}">{{marque.marqueLien}}</a></article>
+                        </section>
+                    </article>
+                </section>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$('html,body').animate({ scrollTop : $('#logo').offset().top}, 'slow');
+</script>
+{%endblock%}
