@@ -14,7 +14,7 @@ class MarqueRepo extends EntityRepository
 {
     public function getHtml()
     {
-        return '<div class="admin-c border">
+        return '<div class="marq admin-c border">
                     <input type="hidden" name="id" value="%idMarque%">
                     <section class="contentMarque">
                         <article class="adminMarque">
