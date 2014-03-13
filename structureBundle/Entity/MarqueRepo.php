@@ -37,4 +37,14 @@ class MarqueRepo extends EntityRepository
                         </article>
                 </div>';
     }
+
+    public function getNew()
+    {
+        $marque = new Marque ();
+        $em = $this->getEntityManager();
+        $em->persist($marque);
+        $em->flush();
+        $sql = 'select p from EuroLiteriestructureBundle:Promotion p where p.id = (select max(m.id) from EuroLiteriestructureBundle:Promotion m)';
+        return $em->createQuery($sql)->getSingleResult();
+    }
 }

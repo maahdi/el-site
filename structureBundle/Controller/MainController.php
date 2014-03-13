@@ -212,4 +212,16 @@ class MainController extends Controller
             }
         }
     }
+
+    public function addElementAction($object)
+    {
+        if ($this->get('security.context')->isGranted('ROLE_USER'))
+        {
+            if (($repo = self::getRepoAdminContentList($object)) != false)
+            {
+                $element = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:'.$repo)->getNew();
+                return new JsonResponse($element);
+            }
+        }
+    }
 }

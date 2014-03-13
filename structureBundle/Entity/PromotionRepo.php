@@ -40,4 +40,17 @@ class PromotionRepo extends EntityRepository
         $query = $this->getEntityManager()->createQuery('select p from EuroLiteriestructureBundle:Promotion p order by p.dateDebut asc');
         return $query->getResult();
     }
+
+    public function getNew()
+    {
+        $promo = new Promotion ();
+        $promo->setTag('periode');
+        $promo->setDateDebut(new \Datetime());
+        $promo->setDateFin(new \Datetime('+7 days'));
+        $em = $this->getEntityManager();
+        $em->persist($promo);
+        $em->flush();
+        $sql = 'select p from EuroLiteriestructureBundle:Promotion p where p.id = (select max(m.id) from EuroLiteriestructureBundle:Promotion m)';
+        return $em->createQuery($sql)->getSingleResult();
+    }
 }
