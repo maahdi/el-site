@@ -48,8 +48,22 @@ class GestionMenu
              * !!!Attention!!! 
              * A enlever
              * en prod mettre : 
-             *     $menus = $this->getMenuFromRepo('left','Menu');
-             *     $admin = false;
+
+$menus = $this->getMenuFromRepo('left','Menu');
+if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
+{
+    $admin = false;
+    if ($secure->isGranted('ROLE_ADMIN'))
+    {
+        $admin = true;
+        $this->setAdminMenu($menus);
+        return $this->getRetour('admin',$menus);
+    }
+}else
+{
+    return $this->getRetour('normal',$menus);
+}
+
              */
             if ($secure->isGranted('ROLE_SUPER_ADMIN'))
             {
@@ -97,20 +111,6 @@ class GestionMenu
                 }
             }
         }return array(false);
-         /**
-         * A décommenter
-         * pour la prod a la place de ce qu'il y avait avant
-         **/
-/**
-        $menus = $this->getMenuFromRepo('left','Menu');
-        $admin = false;
-        if ($this->secure->isGranted('ROLE_ADMIN'))
-        {
-            $admin = true;
-            $this->setAdminMenu($menus);
-        }
-        return array('menus' => $menus,'literie_admin' => $admin);
- */
        }
     
 
@@ -183,8 +183,8 @@ class GestionMenu
             $fn = 'getRight'.$menu;
         }
         /**
-         * A enlever $site
-         * Et aussi dans MenuRepo
+         * A Remplacer en prod
+$site = null;
          */
         $site = 1;
         return $this->container->get('doctrine.orm.default_entity_manager')->getRepository('yomaahBundle:'.$menu)->$fn($site);
