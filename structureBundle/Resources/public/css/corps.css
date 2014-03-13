@@ -1,0 +1,260 @@
+
+@font-face
+{
+    font-family :'Volkhov' , serif;
+}
+body
+{
+    font-family : "Volkhov";
+    background-color: #a5aabf;
+}
+#corps
+{
+    /*background-color:#e6d8d8;*/
+    margin-top : -1em;
+    background-color : #dbe1e2;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    /*margin-right:0;*/
+    margin-bottom:-10px;
+    /*overflow:hidden;*/
+    position :relative;
+    display :block;
+    /*z-index : 0;*/
+    width : 100%;
+    height : auto;
+    font-family : "Volkhov";
+}
+
+footer
+{
+    position : relative;
+    display:block;
+    z-index:10;
+    width : 100%;
+    height: 4em;
+    background: url("../images/bandeau_bot.png") repeat-x;
+    background-size: 100% 100%;
+    border-radius:0px 0px 5px 5px; 
+    font-family : "Volkhov";
+}
+
+#position
+{
+    color:#2a4674!important;
+}
+
+#position:before
+{
+    content:'>> ';
+}
+#div-pos
+{
+    display:block;
+    width : 103%;
+    margin-top:-0.65em;
+    margin-left:-1.5%;
+    background-color : #cdd3ed;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+#position
+{
+    width : 100%;
+    line-height : 2em;
+    font-size:0.9em;
+    padding-left:2%;
+    margin-bottom:5%;
+    margin-top:1%;
+    text-align:left;
+    margin-bottom:1.7%;
+}
+
+.main-titre
+{
+    text-align: center; 
+    color:#2a4674!important;
+    font-size:1.7em;
+    margin-bottom:7%;
+    margin-top:3%;
+    font-family : "Volkhov";
+}
+#border
+{
+    width : 82%;
+    display : block;
+    position : relative;
+    margin-top : 4em;
+    background-color:#f9e5e5;
+    border: 2px solid #2a4674;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    margin-bottom : 2em;
+    margin-left : 2.5em;
+    padding-top : -2em;
+}
+
+article
+{
+    font-family : "Volkhov";
+}
+
+.a-promotion
+{
+    position: relative;
+    font-size:0.8em;
+    padding-left:2%;
+    margin-bottom : 1em;
+    font-family : "Volkhov";
+}
+.promo-content
+{
+	font-size:0.8em;
+    padding-left:12%;
+    color:red;
+    text-align:justify;
+    font-family : "Volkhov";
+
+}
+.promotion
+{
+    top :-0.1em;
+    position : relative;
+    width : 100%;
+    height : auto;
+}
+.promo-titre
+{
+    margin-top:1em;
+    border-top : 1px solid black;
+    border-bottom : 1px solid black;
+    background-color: #2a4674;
+    height : auto;
+    font-family : "Volkhov";
+}
+
+.promotion:first-child .promo-titre
+{
+    border-top:none;
+    padding-top : 1%;
+    margin-top:0;
+}
+.promo-date h2
+{
+    text-align:left;
+    line-height : 2em;
+    font-size:1.2em;
+    padding-left:3%;
+    text-align:center!important;
+    font-family : "Volkhov";
+
+}
+.border-left
+{
+    display:block;
+    border-left : 2px solid black;
+}
+.promotions
+{
+    margin-bottom : 2em;
+}
+.promo-titre h2
+{
+    text-align:center!important;
+    font-size:1.5em;
+    line-height : 2em;
+    color: #e4f30c;
+    font-family : "Volkhov";
+}
+.art-titre h1 
+{
+    margin-left:6%;
+    font-size: 1.5em;
+    margin-bottom:2.5%;
+    margin-top:3.5%;
+}
+.art-titre h1
+{
+    color :#2a4674;
+    font-family : "Volkhov";
+}
+
+.art-titre h1:before
+{
+    content:'- ';
+}
+
+.art-titre h1:after
+{
+    content:' -';
+}
+.art-content
+{
+    text-align:justify;
+    font-size:0.9em;
+    margin-left:2%;
+    overflow-x:hidden!important;
+    padding-right:2%;
+}
+
+.art-content p
+{
+    display:block;
+    margin : 0.2em;
+    padding-left : 0.8em;
+    color : black;
+}
+.articles
+{
+    margin-bottom : 5em;
+}
+.article
+{
+    margin-bottom : 3em;
+}
+
+#back-top {
+    position: fixed;
+    bottom: 30px;
+    z-index:2000;
+    display:none;
+    left : 77%;
+}
+#back-top a {
+    width: 6em;
+    display: block;
+    text-align: center;
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #747b49;
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover {
+    color: #000;
+}
+/* arrow icon (span tag) */
+#back-top span {
+    width: 6em;
+    height: 6em;;
+    display: block;
+	margin-bottom: 7px;
+	background: #747b49 url(../images/haut.png) no-repeat center center;
+	/* rounded corners */
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover span {
+    background-color: #777;
+}

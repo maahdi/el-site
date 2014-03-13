@@ -1,0 +1,145 @@
+/*
+ * A enlever en prod
+ */
+#lol
+{
+ margin-top : 4%!important;
+}
+.literie-menu,
+.literie-menu ul,
+.literie-menu li,
+.literie-menu a
+{
+    margin:0;
+    padding:0;
+    border:none;
+    outline:none;
+}
+
+.literie-menu
+{
+    position : relative;
+    z-index:10;
+    height: 2.4em;
+    width:103%;
+    margin-left:-1.5%;
+    margin-top: 0;
+    background-color: #2a4674;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;   
+    border-radius:0px 0px 5px 5px;
+
+}
+
+.literie-menu li
+{
+    position: relative;
+    list-style : none;
+    float : left;
+    display: block;
+    height: 2.4em;
+    width:8em;
+}
+
+.literie-menu li a
+{
+    display:block;
+    padding:0 0.6em;
+    margin: 0.4em 0;
+    text-align: center;
+    line-height: 2.1em;
+    text-decoration: none;
+    border-left: 1px solid #393942;
+    border-right: 1px solid #4f5058;
+    font-size: 13px;
+    font-family : "Volkhov";
+    color: #e4f30c;
+    text-shadow: 1px 1px 1px rgba(0,0,0, .6);
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.literie-menu li:first-child a {border-left:none;}
+.literie-menu li:last-child a {border-right: none;}
+
+.literie-menu li:hover > a {color:#0e9c07;}
+
+.literie-menu ul
+{
+    z-index:11;
+    position: absolute;
+    top: 2.4em;
+    left:0;
+    opacity:0;
+    background: #2a4674;
+    -webkit-transition:opacity .25s ease .1s;
+    -moz-transition:opacity .25s ease .1s;
+    -o-transition: opacity .25s ease .1s;
+    -ms-transition: opacity .25 ease .1s;
+    transition: opacity .25s ease .1s;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius:0 0 5px 5px;
+}
+
+.literie-menu li:hover > ul {opacity:1;}
+
+.literie-menu ul li
+{
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    -webkit-transition:height .25s ease .1s;
+    -moz-transition:height .25s ease .1s;
+    -o-transition: height .25s ease .1s;
+    -ms-transition: height .25 ease .1s;
+    transition: height .25s ease .1s;
+}
+
+.literie-menu li:hover > ul li
+{
+    height: 2.4em;
+    width:10em;
+    overflow: visible;
+    padding:0;
+}
+
+.literie-menu ul li a
+{
+    text-align : left;
+    width: 100%;
+    padding: 4px 0 4px 2.4em;
+    margin:0;
+    border : none;
+    border-bottom: 1px solid #353539;
+}
+
+#lol
+{
+    margin-top:0.5%;
+    margin-left:-1.5%;
+    display:block;
+    width:103%;
+    height: 14.5em;
+    border: 4px solid #2a4674;
+    -webkit-border-radius:0px 5px 0px 5px;
+    -moz-border-radius:0px 5px 0px 0px;
+    border-radius:5px 5px 0px 0px;
+    margin-bottom: -5px;
+}
+#logo{
+    /*margin-left:-2%;*/
+    width:100.0%;
+    margin-top:0;
+}
+
+#logo img
+{
+    margin-left:5%;
+    width:90%;
+    height: 14em;
+}
+

@@ -1,0 +1,132 @@
+﻿.courrier p:first-child:before
+{
+    content:url('../images/courrier.png');
+    margin-right:5px;
+    vertical-align:middle;
+    position:relative;
+    
+}
+.courrier
+{
+    margin-top:-4em;
+}
+.phone
+{
+    margin-top:2em;
+}
+
+.phone p:before
+{
+    content: url('../images/phone.png');
+    margin-right:5px;
+    vertical-align:middle;
+    position:relative;
+}
+
+
+.map
+{
+    width : 97%;
+    height : 27em;
+}
+
+.article table
+{
+    margin-top : 1em;
+    background:none;
+    padding-left:5em;
+    border:none;
+}
+
+.article table tr
+{
+    font-size:1.1em;
+}
+
+.article table tr td
+{
+    display:inline-block;
+    margin-left : 4em;
+    width : 20em;
+    text-align : left;
+    font-family : "Volkhov";
+}
+
+.jour
+{
+    width : 5em!important;
+    margin-left : 7em!important;
+}
+
+.article table tr:nth-child(even)
+{
+
+    background:none;
+}
+
+.article table tr:nth-child(odd)
+{
+    background:none;
+}
+
+.art-adresse
+{
+    margin-top : -2em!important;
+    margin-bottom :0;
+}
+
+.form-email
+{
+    padding-left : 7em;
+    margin-top : 2em;
+    width : 50%;
+    height : auto;
+}
+
+.form-email label,
+.form-email input
+{
+    display: block;
+}
+
+.form-email label
+{
+    margin-bottom : 0.5em;
+}
+
+.form-email input
+{
+    height : 2.5em;
+}
+
+.form-email textarea
+{
+    height : 9em;
+    font-size : 0.8em;
+}
+.admin-content input, .admin-content textarea,
+.form-email input, .form-email textarea
+{
+    -moz-border-radius:0px 0 0 0px; 
+    -webkit-border-radius:0px 0 0 0px; 
+    border-radius:5px 5px 5px 5px; 
+}
+.form-email input[type=submit]
+{
+    margin-top : 1.5em;
+    width : 100%;
+    background-color:#2a4674;
+    border-color:#2a4674;
+    font-weight:bold;
+    color:#e4f30c;
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.form-email input[type=submit]:hover
+{
+    color: #0e9c07;    
+}

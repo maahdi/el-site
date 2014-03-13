@@ -66,7 +66,7 @@
 	background:#000;
 	color:#fff;
 	width:100%;
-	z-index:8;
+    z-index:8;
 	padding: 5px 10px;
 	opacity: 0.8;
 	overflow: hidden;
@@ -91,7 +91,7 @@
 .nivo-directionNav a {
 	position:absolute;
 	top:45%;
-	z-index:9;
+    z-index:9;
 	cursor:pointer;
 }
 .nivo-prevNav {
@@ -186,7 +186,7 @@
 }
 .futurico-theme .nivo-directionNav a
 {
-    z-index:2000;
+    /*z-index:2000;*/
     top:38%;
     background-color:#fff;
     filter:alpha(opacity=50%);
@@ -201,5 +201,5 @@
     color: #141517;
     text-shadow: 0px 1px 1px rgba(255,255,255, .05);
 }
-.futurico-theme a.nivo-prevNav{left:1%;z-index:2000;}
-.futurico-theme a.nivo-nextNav{right:1%;z-index:2000;}
+.futurico-theme a.nivo-prevNav{left:1%;z-index:10;}
+.futurico-theme a.nivo-nextNav{right:1%;z-index:10;}

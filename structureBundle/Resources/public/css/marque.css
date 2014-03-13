@@ -1,0 +1,176 @@
+﻿.marques
+{
+    margin-top : 3em;
+    width : 100%;
+    height :auto;
+}
+
+.marque
+{
+    width:100%;
+    height:486px;
+    color:#474747;
+    background:#414141;
+    padding:0.4em;
+    font-family:"fonty";
+}
+
+.marque section
+{
+    float:left;
+    overflow:hidden;
+    /*height : auto;*/
+    color:#333;
+    cursor:pointer;
+    background:#333;
+    margin:1.5px;
+}
+
+.marque section:hover
+{
+    background:#444;
+}
+
+.marque section h3 a:hover
+{
+    color:#0e9c07;
+}
+
+.marque section section
+{
+    display:none;
+    /*height: auto;*/
+}
+
+.marque section:target
+{
+    background:#fff;
+}
+
+.marque section:target:hover
+{
+    background:#fff;
+}
+
+.marque section:target h3
+{
+    border-bottom:2px solid #333;
+    padding:0.5em;
+    width:100%;
+}
+.marque section:target h3 a
+{
+    margin-top:-1%;
+    color:#0e9c07;
+    width:100%;
+}
+.marque section:target section
+{
+    display:block;
+    width:98.5%;
+    /*height:auto;*/
+    margin-bottom:-4%;
+    margin-top:-1%;
+    background:#fff;
+}
+
+.marque-content
+{
+    font-family : "Volkhov";
+    font-size : 1em;
+    margin-top : 0.5em;
+    font-size : 0.8em;
+    margin-bottom : 0.2em;
+    padding-left : 0.8em;
+    color : black;
+}
+
+.horizontal section
+{
+    width:4%;
+    height:470px;
+    -moz-transition: width 0.2s ease-out;
+    -webkit-transition:width 0.2s ease-out;
+    -o-transition: width 0.2s ease-out;
+    transition: width 0.2s ease-out;
+}
+
+.horizontal a
+{
+    color: #e4f30c;
+}
+
+.horizontal section h3
+{
+    font-size : 1.2em;
+    font-family : "Volkhov";
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    transform:rotate(90deg);
+    width:470px;
+    position: relative;
+    left:-215px;
+    top:238px;
+}
+
+.horizontal :target
+{
+    width:59%;
+    height:470px;
+}
+.horizontal :target img 
+{ 
+    display :block;
+}
+.horizontal :target h3
+{
+    top:-0.3em;
+    left:0em;
+    background-color :#c3c5c3;
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    transform:rotate(0deg);
+}
+/*.horizontal :target img*/
+/*{*/
+    /*display: inline-block;*/
+    /*position:relative;*/
+    /*top:-49px;*/
+    /*right: 1%;*/
+/*}*/
+.marque-link a:before
+{
+    content :'Site internet : ';
+    color : black;
+}
+
+.horizontal img
+{
+    display:none;
+}
+.marque-link a
+{
+    display : block;
+    margin-top : 1.5em;
+    padding-right : 0.8em;
+    color :#2a4674;
+    float :right;
+}
+
+.marque-img
+{
+    width : 20%;
+    height:30%;
+    position : relative;
+}
+.marque-img img
+{
+    margin-bottom : 0.5em;
+    max-width :90%;
+    padding-left : 1.0em;
+    float :left;
+    position :relative;
+    height : auto;
+}

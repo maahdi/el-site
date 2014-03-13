@@ -1,0 +1,83 @@
+.addArt-bar .tool-items a span
+{
+    width : 9em;
+    margin-top :-75px;
+    margin-left :-75px;
+}
+.addArt-bar .tool-items a:hover span,.addArt-bar .tool-items a:focus span
+{ 
+    transform:scale(1) rotate(0); 
+    opacity : 1;
+}
+.arrow
+{
+    z-index :0;
+}
+.art-bar .tool-items .icon-remove span
+{
+    width : 13em;
+    margin-top :-60px;
+    margin-left :-105px;
+    z-index :200;
+}
+
+.art-bar .tool-items .icon-edit span
+{
+    width : 9em;
+    margin-top :-60px;
+    margin-left :-75px;
+}
+
+.art-bar .tool-items a:hover span,.art-bar .tool-items a:focus span
+{ 
+    transform:scale(1) rotate(0); 
+    opacity : 1;
+}
+
+.art-bar .tool-items .icon-edit span,
+.addArt-bar .tool-items a span,
+.art-bar .tool-items .icon-remove span
+{
+    color:#09c; 
+    position : absolute;
+    background:rgba(0,0,0,.9);
+    padding:15px;
+    border-radius:3px;
+    box-shadow:0 0 2px rgba(0,0,0,.5);
+    transform:scale(0) rotate(-12deg);
+    transition:all .25s;
+    opacity : 0;
+    z-index : 2;
+}
+/*.art-bar*/
+/*{*/
+    /*[>width :50%;<]*/
+    /*padding-right :6em;*/
+    /*position : relative;*/
+    /*display : block;*/
+    /*float :right;*/
+    /*top :-6em;*/
+    /*left : 2.2em;*/
+/*}*/
+/*.addArt-bar*/
+/*{*/
+    /*position :fixed;*/
+    /*display:block;*/
+    /*margin-top : -7em;*/
+/*}*/
+.art-bar
+{
+    padding-bottom: -10em;
+    padding-right :6em;
+    position : relative;
+    display : block;
+    float :right;
+    left : 1.2em;
+    z-index :0;
+}
+.addArt-bar
+{
+    margin-left :-1em;
+    position :fixed;
+    display:block;
+}
