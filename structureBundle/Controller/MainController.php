@@ -90,7 +90,7 @@ class MainController extends Controller
     public function magasinAction()
     {
         $params = $this->getParams('magasin');
-        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:magasin.html.twig',array($params));
+        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:magasin.html.twig',$params);
     }
 
     public function contactAction()
