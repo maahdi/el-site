@@ -10,15 +10,16 @@ use Yomaah\structureBundle\Entity\MyMail;
 
 class MainController extends Controller
 {
+    private $keywords = 'euroliterie, matelats, sommier, vente, literie, lits électriques';
+
     public function indexAction()
     {
-        
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:index.html.twig');
     }
 
     public function accueilAction()
     {
-        $articles = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage('accueil',1);
+        //$articles = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage('accueil',1);
         $promotions = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Promotion')->findBy(array('tag'=>'periode'), array('dateDebut' => 'asc'));
         $i =0;
         $actuel = array();
@@ -42,21 +43,54 @@ class MainController extends Controller
         {
             $avenir = false;
         }
-        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig',
-            array('position' => 'Accueil','articles' => $articles,'actuel' => $actuel,'avenir' => $avenir));
+        $params = $this->getParams('accueil');
+        $params['actuel'] = $actuel;
+        $params['avenir'] = $avenir;
+        //return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig',
+            //array('position' => 'Accueil','articles' => $articles,'actuel' => $actuel,'avenir' => $avenir));
+        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig', $params);
+    }
+
+    private function getParams($page)
+    {
+        $params['articles'] = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage($page, 1);
+        $keywords = $this->getDoctrine()->getRepository('yomaahBundle:Page')->findKeywords($page, 1);
+        if (!$keywords['keywords'])
+        {
+            $params['keywords'] = $this->keywords;
+        }else
+        {
+            $params['keywords'] = $this->keywords.', '.$keywords['keywords']; 
+        }
+        $params['position'] = $this->getPosition($page);
+        return $params;
+    }
+
+    /*
+     * Possibilité de mettre sa en base ou yml pour changer dynamiquement
+     */
+    private function getPosition($page)
+    {
+        $positions = array('accueil' => 'Accueil',
+            'marques' => 'Nos Marques',
+            'contact' => 'Nous Trouver',
+            'magasin' => 'Notre magasin');
+        return $positions[$page];
+        
     }
 
     public function marquesAction()
     {
-        $articles = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage('marques',1);
-        $marques = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
-        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:marques.html.twig',
-            array('position' => 'Nos Marques', 'articles' => $articles, 'marques' => $marques));
+        //$articles = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage('marques',1);
+        $params = $this->getParams('marques');
+        $params['marques'] = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
+        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:marques.html.twig', $params);
     }
 
     public function magasinAction()
     {
-        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:magasin.html.twig',array('position' => 'Notre magasin'));
+        $params = $this->getParams('magasin');
+        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:magasin.html.twig',array($params));
     }
 
     public function contactAction()
@@ -83,11 +117,17 @@ class MainController extends Controller
             $this->get('session')->remove('envoie');
             $envoi = true;
         }
+        $params = $this->getParams('contact');
         $h = new HoraireRepo();
-        $horaires = $h->getHoraires();
-        $articles = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage('contact', 1);
-        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:contact.html.twig', 
-            array('position' => 'Nous trouver', 'horaires' =>$horaires, 'articles' => $articles,'form' => $form->createView(),'envoie' => $envoi));
+        $params['horaires'] = $h->getHoraires();
+        $params['form'] = $form->createView();
+        $params['envoie'] = $envoi;
+        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:contact.html.twig', $params);
+        //$h = new HoraireRepo();
+        //$horaires = $h->getHoraires();
+        //$articles = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage('contact', 1);
+        //return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:contact.html.twig', 
+            //array('position' => 'Nous trouver', 'horaires' =>$horaires, 'articles' => $articles,'form' => $form->createView(),'envoie' => $envoi));
     }
 
     private function getForm($mail)

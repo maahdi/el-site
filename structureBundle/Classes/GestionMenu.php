@@ -41,7 +41,7 @@ class GestionMenu
          * L'utilisateur doit être connecter
          * soit un client soit moi
          **/
-        if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
+        if ($secure->getToken() != null)
         {
             /**
              * Partie pour tester le site avec mon identifiant
@@ -52,10 +52,8 @@ class GestionMenu
 $menus = $this->getMenuFromRepo('left','Menu');
 if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
 {
-    $admin = false;
     if ($secure->isGranted('ROLE_ADMIN'))
     {
-        $admin = true;
         $this->setAdminMenu($menus);
         return $this->getRetour('admin',$menus);
     }
@@ -64,54 +62,57 @@ if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
     return $this->getRetour('normal',$menus);
 }
 
-             */
-            if ($secure->isGranted('ROLE_SUPER_ADMIN'))
+ */
+            if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
             {
-                $menus = $this->getMenuFromRepo('left','Menu');
-                if (($session->get('zoneAdmin') != null) && $session->get('zoneAdmin'))
+                if ($secure->isGranted('ROLE_SUPER_ADMIN'))
                 {
-                    $this->setAdminMenu($menus);
-                    $session->set('idSite', 1);
-                    return $this->getRetour('admin',$menus);
+                    $menus = $this->getMenuFromRepo('left','Menu');
+                    if (($session->get('zoneAdmin') != null) && $session->get('zoneAdmin'))
+                    {
+                        $this->setAdminMenu($menus);
+                        $session->set('idSite', 1);
+                        return $this->getRetour('admin',$menus);
+                    }else
+                    {
+                        return $this->getRetour('normal',$menus);
+                    }
+
                 }else
                 {
-                    return $this->getRetour('normal',$menus);
-                }
-
-            }else
-            {
-                $sitesAvailables = $user->getSites();
-                $auth = false;
-                /**
-                 * vérifie que le site appartient bien à l'utilisateur qui le visite
-                 */
-                foreach ($sitesAvailables as $site)
-                {
-                    if ($site->getNomSite() == 'literie')
+                    $sitesAvailables = $user->getSites();
+                    $auth = false;
+                    /**
+                     * vérifie que le site appartient bien à l'utilisateur qui le visite
+                     */
+                    foreach ($sitesAvailables as $site)
                     {
-                        $session->set('idSite', 1);
-                        $auth = true;
+                        if ($site->getNomSite() == 'literie')
+                        {
+                            $session->set('idSite', 1);
+                            $auth = true;
+                        }
+                    }
+                    $menus = null;
+                    if ($auth)
+                    {
+                      $menus = $this->getMenuFromRepo('left','Menu');
+                    }
+                    /**
+                     * pour simuler connexion à la zone admin
+                     */
+                    if (($session->get('zoneAdmin') != null) && $session->get('zoneAdmin'))
+                    {
+                        $this->setAdminMenu($menus);
+                        return $this->getRetour('admin',$menus);
+                    }else
+                    {
+                        return $this->getRetour('normal', $menus);
                     }
                 }
-                $menus = null;
-                if ($auth)
-                {
-                  $menus = $this->getMenuFromRepo('left','Menu');
-                }
-                /**
-                 * pour simuler connexion à la zone admin
-                 */
-                if (($session->get('zoneAdmin') != null) && $session->get('zoneAdmin'))
-                {
-                    $this->setAdminMenu($menus);
-                    return $this->getRetour('admin',$menus);
-                }else
-                {
-                    return $this->getRetour('normal', $menus);
-                }
-            }
-        }return array(false);
-       }
+            }return array(false);
+        }
+    }
     
 
     private function getRetour($retour, $menus)
