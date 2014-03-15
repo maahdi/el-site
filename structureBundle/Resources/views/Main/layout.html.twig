@@ -8,25 +8,24 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Euro Literie Aquitaine</title>
-    <meta name="keywords" content="{{ keywords }}"/>
-    <link rel="stylesheet" href="{{asset('bundles/EuroLiteriestructure/css/foundation.min.css')}}">
-    <link rel="stylesheet" href="{{asset('bundles/EuroLiteriestructure/css/nivo-slider.css')}}">
-    <link rel="stylesheet" href="{{asset('bundles/EuroLiteriestructure/css/normalize.css')}}">
-    <link rel="stylesheet" href="{{asset('bundles/EuroLiteriestructure/css/menu.css')}}">
-    <link rel="stylesheet" href="{{asset('bundles/EuroLiteriestructure/css/corps.css')}}">
-    <link rel="stylesheet" href="{{asset('bundles/EuroLiteriestructure/css/marque.css')}}">
-    <link rel="stylesheet" href="{{asset('bundles/EuroLiteriestructure/css/contact.css')}}">
+    {%if keywords is defined%}
+        <meta name="keywords" content="{{ keywords }}"/>
+    {%endif%}
+
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/euroliteriestructure/css/foundation.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/euroliteriestructure/css/nivo-slider.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/euroliteriestructure/css/normalize.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/euroliteriestructure/css/euroliterie.css')}}">
     <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/fontawesome/css/font-awesome.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/jquery-ui-1.10.4.custom.min.css') }}" />
     <link href='http://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
     {# A enlever#}
     <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/main-bar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/adminInterface.css') }}" />
     {##}
-    <script src="{{ asset('bundles/EuroLiteriestructure/js/jquery-2.0.3.min.js')}}"></script>
-    <script src="{{ asset('bundles/EuroLiteriestructure/js/jquery-ready.js')}}"></script>
+    <script src="{{ asset('bundles/euroliteriestructure/js/jquery-2.0.3.min.js')}}"></script>
+    <script src="{{ asset('bundles/euroliteriestructure/js/jquery-ready.js')}}"></script>
     <script src="{{asset('bundles/yomaah/js/jquery-ui-1.10.4.custom.min.js')}}"></script>
-    <script src="{{ asset('bundles/EuroLiteriestructure/js/jquery.nivo.slider.pack.js')}}"></script>
+    <script src="{{ asset('bundles/euroliteriestructure/js/jquery.nivo.slider.pack.js')}}"></script>
 </head>
 <html>
 <body>
@@ -43,10 +42,7 @@
     <div class="row">
         <div id="corps" class="border-radius small-12 columns">
             <div id="div-pos" class="border-radius">
-                {#<div class="small-6 columns">#}
-    
-                    <h5 id="position">{{position}}</h1>
-                {#<div>#}
+                <h5 id="position">{{position}}</h1>
             </div>
     {%block body%}
     {%endblock%}
@@ -54,24 +50,27 @@
     </div>
     <div id ="footer" class="row">
         <footer>
-            <div class="small-12 columns">
-                <a id="clic" href=#>lien</a>
-            </div>
+            {#<div class="small-12 columns">#}
+                {#<a id="clic" href=#>lien</a>#}
+            {#</div>#}
         </footer>
     </div>
-    <p id="back-top">
-		<a href="#top"><span></span>Haut de page</a>
-	</p>
-    {# zoneAdmin deviendra admin en prod #}
+    {% if app.session.get('mobile') == false %}
+        <p id="back-top">
+            <a href="#top"><span></span>Haut de page</a>
+        </p>
+    {%endif%}
     {%if literie_admin is defined and literie_admin%}
         {% include 'yomaahBundle:Toolbar:toolbar.html.twig' %}
         {% include 'yomaahBundle:Toolbar:addArticleToolBar.html.twig' %}
         <script type="text/javascript" src="{{asset('bundles/yomaah/js/monHallo.js')}}"></script>
         <script src="{{asset('bundles/yomaah/js/rangy-core.js')}}"></script>
         <script src="{{asset('bundles/yomaah/js/hallo.js')}}"></script>
+
         <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/bootstrap.icons.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/jquery.toolbars.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/EuroLiteriestructure/css/monToolbar.css') }}" />
+        {#<link rel="stylesheet" href="{{ asset('bundles/EuroLiteriestructure/css/monToolbar.css') }}" />#}
+        <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/adminInterface.css') }}" />
         <script type="text/javascript" src="{{asset('bundles/yomaah/js/jquery.toolbar.js')}}"></script>
         <script>setAdminToolbar()</script>
     {%endif%}

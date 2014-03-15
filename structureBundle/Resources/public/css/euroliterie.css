@@ -1,0 +1,715 @@
+﻿
+@font-face
+{
+    font-family :'Volkhov' , serif;
+}
+
+.courrier p:first-child:before
+{
+    content:url('../images/courrier.png');
+    margin-right:5px;
+    vertical-align:middle;
+    position:relative;
+    
+}
+.courrier
+{
+    margin-top:-4em;
+}
+.phone
+{
+    margin-top:2em;
+}
+
+.phone p:before
+{
+    content: url('../images/phone.png');
+    margin-right:5px;
+    vertical-align:middle;
+    position:relative;
+}
+
+
+.map
+{
+    width : 97%;
+    height : 27em;
+}
+
+.article table
+{
+    margin-top : 1em;
+    background:none;
+    padding-left:5em;
+    border:none;
+}
+
+.article table tr
+{
+    font-size:1.1em;
+}
+
+.article table tr td
+{
+    display:inline-block;
+    margin-left : 4em;
+    width : 20em;
+    text-align : left;
+    font-family : "Volkhov";
+}
+
+.jour
+{
+    width : 5em!important;
+    margin-left : 7em!important;
+}
+
+.article table tr:nth-child(even)
+{
+
+    background:none;
+}
+
+.article table tr:nth-child(odd)
+{
+    background:none;
+}
+
+.art-adresse
+{
+    margin-top : -2em!important;
+    margin-bottom :0;
+}
+
+.form-email
+{
+    padding-left : 7em;
+    margin-top : 2em;
+    width : 50%;
+    height : auto;
+}
+
+.form-email label,
+.form-email input
+{
+    display: block;
+}
+
+.form-email label
+{
+    margin-bottom : 0.5em;
+}
+
+.form-email input
+{
+    height : 2.5em;
+}
+
+.form-email textarea
+{
+    height : 9em;
+    font-size : 0.8em;
+}
+.admin-content input, .admin-content textarea,
+.form-email input, .form-email textarea
+{
+    -moz-border-radius:0px 0 0 0px; 
+    -webkit-border-radius:0px 0 0 0px; 
+    border-radius:5px 5px 5px 5px; 
+}
+.form-email input[type=submit]
+{
+    margin-top : 1.5em;
+    width : 100%;
+    background-color:#2a4674;
+    border-color:#2a4674;
+    font-weight:bold;
+    color:#e4f30c;
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.form-email input[type=submit]:hover
+{
+    color: #0e9c07;    
+}
+
+body
+{
+    font-family : "Volkhov";
+    background-color: #a5aabf;
+}
+#corps
+{
+    /*background-color:#e6d8d8;*/
+    margin-top : -1em;
+    background-color : #dbe1e2;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    /*margin-right:0;*/
+    margin-bottom:-10px;
+    /*overflow:hidden;*/
+    position :relative;
+    display :block;
+    /*z-index : 0;*/
+    width : 100%;
+    height : auto;
+    font-family : "Volkhov";
+}
+
+footer
+{
+    position : relative;
+    display:block;
+    z-index:10;
+    width : 100%;
+    height: 4em;
+    background: url("../images/bandeau_bot.png") repeat-x;
+    background-size: 100% 100%;
+    border-radius:0px 0px 5px 5px; 
+    font-family : "Volkhov";
+}
+
+#position
+{
+    color:#2a4674!important;
+}
+
+#position:before
+{
+    content:'>> ';
+}
+#div-pos
+{
+    display:block;
+    width : 103%;
+    margin-top:-0.65em;
+    margin-left:-1.5%;
+    background-color : #cdd3ed;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+#position
+{
+    width : 100%;
+    line-height : 2em;
+    font-size:0.9em;
+    padding-left:2%;
+    margin-bottom:5%;
+    margin-top:1%;
+    text-align:left;
+    margin-bottom:1.7%;
+}
+
+.main-titre
+{
+    text-align: center; 
+    color:#2a4674!important;
+    font-size:1.7em;
+    margin-bottom:7%;
+    margin-top:3%;
+    font-family : "Volkhov";
+}
+#border
+{
+    width : 82%;
+    display : block;
+    position : relative;
+    margin-top : 4em;
+    background-color:#f9e5e5;
+    border: 2px solid #2a4674;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    margin-bottom : 2em;
+    margin-left : 2.5em;
+    padding-top : -2em;
+}
+
+article
+{
+    font-family : "Volkhov";
+}
+
+.a-promotion
+{
+    position: relative;
+    font-size:0.8em;
+    padding-left:2%;
+    margin-bottom : 1em;
+    font-family : "Volkhov";
+}
+.promo-content
+{
+	font-size:0.8em;
+    padding-left:12%;
+    color:red;
+    text-align:justify;
+    font-family : "Volkhov";
+
+}
+.promotion
+{
+    top :-0.1em;
+    position : relative;
+    width : 100%;
+    height : auto;
+}
+.promo-titre
+{
+    margin-top:1em;
+    border-top : 1px solid black;
+    border-bottom : 1px solid black;
+    background-color: #2a4674;
+    height : auto;
+    font-family : "Volkhov";
+}
+
+.promotion:first-child .promo-titre
+{
+    border-top:none;
+    padding-top : 1%;
+    margin-top:0;
+}
+.promo-date h2
+{
+    text-align:left;
+    line-height : 2em;
+    font-size:1.2em;
+    padding-left:3%;
+    text-align:center!important;
+    font-family : "Volkhov";
+
+}
+.border-left
+{
+    display:block;
+    border-left : 2px solid black;
+}
+.promotions
+{
+    margin-bottom : 2em;
+}
+.promo-titre h2
+{
+    text-align:center!important;
+    font-size:1.5em;
+    line-height : 2em;
+    color: #e4f30c;
+    font-family : "Volkhov";
+}
+.art-titre h1 
+{
+    margin-left:6%;
+    font-size: 1.5em;
+    margin-bottom:2.5%;
+    margin-top:3.5%;
+}
+.art-titre h1
+{
+    color :#2a4674;
+    font-family : "Volkhov";
+}
+
+.art-titre h1:before
+{
+    content:'- ';
+}
+
+.art-titre h1:after
+{
+    content:' -';
+}
+.art-content
+{
+    text-align:justify;
+    font-size:0.9em;
+    margin-left:2%;
+    overflow-x:hidden!important;
+    padding-right:2%;
+}
+
+.art-content p
+{
+    display:block;
+    margin : 0.2em;
+    padding-left : 0.8em;
+    color : black;
+}
+.articles
+{
+    margin-bottom : 5em;
+}
+.article
+{
+    margin-bottom : 3em;
+}
+
+#back-top {
+    position: fixed;
+    bottom: 30px;
+    z-index:2000;
+    display:none;
+    left : 77%;
+}
+#back-top a {
+    width: 6em;
+    display: block;
+    text-align: center;
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #747b49;
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover {
+    color: #000;
+}
+/* arrow icon (span tag) */
+#back-top span {
+    width: 6em;
+    height: 6em;;
+    display: block;
+	margin-bottom: 7px;
+	background: #747b49 url(../images/haut.png) no-repeat center center;
+	/* rounded corners */
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover span {
+    background-color: #777;
+}
+.marques
+{
+    margin-top : 3em;
+    width : 100%;
+    height :auto;
+}
+
+.marque
+{
+    width:100%;
+    height:486px;
+    color:#474747;
+    background:#414141;
+    padding:0.4em;
+    font-family:"fonty";
+}
+
+.marque section
+{
+    float:left;
+    overflow:hidden;
+    /*height : auto;*/
+    color:#333;
+    cursor:pointer;
+    background:#333;
+    margin:1.5px;
+}
+
+.marque section:hover
+{
+    background:#444;
+}
+
+.marque section h3 a:hover
+{
+    color:#0e9c07;
+}
+
+.marque section section
+{
+    display:none;
+    /*height: auto;*/
+}
+
+.marque section:target
+{
+    background:#fff;
+}
+
+.marque section:target:hover
+{
+    background:#fff;
+}
+
+.marque section:target h3
+{
+    border-bottom:2px solid #333;
+    padding:0.5em;
+    width:100%;
+}
+.marque section:target h3 a
+{
+    margin-top:-1%;
+    color:#0e9c07;
+    width:100%;
+}
+.marque section:target section
+{
+    display:block;
+    width:98.5%;
+    /*height:auto;*/
+    margin-bottom:-4%;
+    margin-top:-1%;
+    background:#fff;
+}
+
+.marque-content
+{
+    font-family : "Volkhov";
+    font-size : 1em;
+    margin-top : 0.5em;
+    font-size : 0.8em;
+    margin-bottom : 0.2em;
+    padding-left : 0.8em;
+    color : black;
+}
+
+.horizontal section
+{
+    width:4%;
+    height:470px;
+    -moz-transition: width 0.2s ease-out;
+    -webkit-transition:width 0.2s ease-out;
+    -o-transition: width 0.2s ease-out;
+    transition: width 0.2s ease-out;
+}
+
+.horizontal a
+{
+    color: #e4f30c;
+}
+
+.horizontal section h3
+{
+    font-size : 1.2em;
+    font-family : "Volkhov";
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    transform:rotate(90deg);
+    width:470px;
+    position: relative;
+    left:-215px;
+    top:238px;
+}
+
+.horizontal :target
+{
+    width:59%;
+    height:470px;
+}
+.horizontal :target img 
+{ 
+    display :block;
+}
+.horizontal :target h3
+{
+    top:-0.3em;
+    left:0em;
+    background-color :#c3c5c3;
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    transform:rotate(0deg);
+}
+/*.horizontal :target img*/
+/*{*/
+    /*display: inline-block;*/
+    /*position:relative;*/
+    /*top:-49px;*/
+    /*right: 1%;*/
+/*}*/
+.marque-link a:before
+{
+    content :'Site internet : ';
+    color : black;
+}
+
+.horizontal img
+{
+    display:none;
+}
+.marque-link a
+{
+    display : block;
+    margin-top : 1.5em;
+    padding-right : 0.8em;
+    color :#2a4674;
+    float :right;
+}
+
+.marque-img
+{
+    width : 20%;
+    height:30%;
+    position : relative;
+}
+.marque-img img
+{
+    margin-bottom : 0.5em;
+    max-width :90%;
+    padding-left : 1.0em;
+    float :left;
+    position :relative;
+    height : auto;
+}
+/*
+ * A enlever en prod
+ */
+#lol
+{
+ margin-top : 4%!important;
+}
+.literie-menu,
+.literie-menu ul,
+.literie-menu li,
+.literie-menu a
+{
+    margin:0;
+    padding:0;
+    border:none;
+    outline:none;
+}
+
+.literie-menu
+{
+    position : relative;
+    z-index:10;
+    height: 2.4em;
+    width:103%;
+    margin-left:-1.5%;
+    margin-top: 0;
+    background-color: #2a4674;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;   
+    border-radius:0px 0px 5px 5px;
+
+}
+
+.literie-menu li
+{
+    position: relative;
+    list-style : none;
+    float : left;
+    display: block;
+    height: 2.4em;
+    width:8em;
+}
+
+.literie-menu li a
+{
+    display:block;
+    padding:0 0.6em;
+    margin: 0.4em 0;
+    text-align: center;
+    line-height: 2.1em;
+    text-decoration: none;
+    border-left: 1px solid #393942;
+    border-right: 1px solid #4f5058;
+    font-size: 13px;
+    font-family : "Volkhov";
+    color: #e4f30c;
+    text-shadow: 1px 1px 1px rgba(0,0,0, .6);
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.literie-menu li:first-child a {border-left:none;}
+.literie-menu li:last-child a {border-right: none;}
+
+.literie-menu li:hover > a {color:#0e9c07;}
+
+.literie-menu ul
+{
+    z-index:11;
+    position: absolute;
+    top: 2.4em;
+    left:0;
+    opacity:0;
+    background: #2a4674;
+    -webkit-transition:opacity .25s ease .1s;
+    -moz-transition:opacity .25s ease .1s;
+    -o-transition: opacity .25s ease .1s;
+    -ms-transition: opacity .25 ease .1s;
+    transition: opacity .25s ease .1s;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius:0 0 5px 5px;
+}
+
+.literie-menu li:hover > ul {opacity:1;}
+
+.literie-menu ul li
+{
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    -webkit-transition:height .25s ease .1s;
+    -moz-transition:height .25s ease .1s;
+    -o-transition: height .25s ease .1s;
+    -ms-transition: height .25 ease .1s;
+    transition: height .25s ease .1s;
+}
+
+.literie-menu li:hover > ul li
+{
+    height: 2.4em;
+    width:10em;
+    overflow: visible;
+    padding:0;
+}
+
+.literie-menu ul li a
+{
+    text-align : left;
+    width: 100%;
+    padding: 4px 0 4px 2.4em;
+    margin:0;
+    border : none;
+    border-bottom: 1px solid #353539;
+}
+
+#lol
+{
+    margin-top:0.5%;
+    margin-left:-1.5%;
+    display:block;
+    width:103%;
+    height: 14.5em;
+    border: 4px solid #2a4674;
+    -webkit-border-radius:0px 5px 0px 5px;
+    -moz-border-radius:0px 5px 0px 0px;
+    border-radius:5px 5px 0px 0px;
+    margin-bottom: -5px;
+}
+#logo{
+    /*margin-left:-2%;*/
+    width:100.0%;
+    margin-top:0;
+}
+
+#logo img
+{
+    margin-left:5%;
+    width:90%;
+    height: 14em;
+}
+
