@@ -1,14 +1,14 @@
 <?php
 namespace EuroLiterie\structureBundle\Entity;
 use EuroLiterie\structureBundle\Entity\Horaire;
+use EuroLiterie\structureBundle\XML\MyXml;
 
-class HoraireRepo
+class HoraireRepo extends MyXml
 {
-    private $path ='EuroLiterie/structureBundle/XML/horaire.xml';
     public function getHoraires()
     {
         $horaires = array();
-        $jours = new \SimpleXmlElement(file_get_contents($this->getXmlFilePath($this->path)));
+        $jours = new \SimpleXmlElement(file_get_contents($this->getXmlFilePath('horaire')));
         foreach ($jours->jour as $jour)
         {
             $horaire = new Horaire();
@@ -22,10 +22,4 @@ class HoraireRepo
         return $horaires;
     }
     
-    private function getXmlFilePath($path)
-    {
-        $dir = preg_split('/\/src/',__DIR__);
-        return $dir[0].'/src/'.$path;
-        
-    }
 }

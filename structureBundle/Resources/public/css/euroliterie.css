@@ -145,7 +145,7 @@ body
 #corps
 {
     /*background-color:#e6d8d8;*/
-    margin-top : -1em;
+    /*margin-top : -1em;*/
     background-color : #dbe1e2;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
@@ -187,7 +187,7 @@ footer
 {
     display:block;
     width : 103%;
-    margin-top:-0.65em;
+    margin-top:-0.85em;
     margin-left:-1.5%;
     background-color : #cdd3ed;
     -webkit-border-radius:5px;
@@ -201,7 +201,7 @@ footer
     font-size:0.9em;
     padding-left:2%;
     margin-bottom:5%;
-    margin-top:1%;
+    /*margin-top:1%;*/
     text-align:left;
     margin-bottom:1.7%;
 }
@@ -568,13 +568,6 @@ article
     position :relative;
     height : auto;
 }
-/*
- * A enlever en prod
- */
-#lol
-{
- margin-top : 4%!important;
-}
 .literie-menu,
 .literie-menu ul,
 .literie-menu li,
@@ -686,7 +679,10 @@ article
     border : none;
     border-bottom: 1px solid #353539;
 }
-
+#lol
+{
+  margin-top:4%!important;
+}
 #lol
 {
     margin-top:0.5%;

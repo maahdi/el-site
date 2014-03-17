@@ -29,12 +29,12 @@ class MarqueRepo extends EntityRepository
                             </section>
                         </article>
                     </section>
-                        <article class="btn-admin maj">
-                            <li>Mettre à jour</li>
-                        </article>
-                        <article class="btn-admin sup">
-                            <li>Supprimer</li>
-                        </article>
+                    <article class="btn-admin maj">
+                        <li>Mettre à jour</li>
+                    </article>
+                    <article class="btn-admin sup">
+                        <li>Supprimer</li>
+                    </article>
                 </div>';
     }
 

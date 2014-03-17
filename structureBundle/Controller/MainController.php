@@ -6,11 +6,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EuroLiterie\structureBundle\Entity\HoraireRepo;
+use EuroLiterie\structureBundle\Entity\KeywordsRepo;
 use Yomaah\structureBundle\Entity\MyMail;
 
 class MainController extends Controller
 {
-    private $keywords = 'euroliterie, matelats, sommier, vente, literie, lits électriques';
+    //private $keywords = 'euroliterie, matelats, sommier, vente, literie, lits électriques';
 
     public function indexAction()
     {
@@ -55,14 +56,18 @@ class MainController extends Controller
     {
         $params['articles'] = $this->getDoctrine()->getRepository('yomaahBundle:Article')->findByPage($page, 1);
         $keywords = $this->getDoctrine()->getRepository('yomaahBundle:Page')->findKeywords($page, 1);
+        $repoKeyword = new KeywordsRepo();
+        $Gkeywords = $repoKeyword->getGeneralKeywords();
         if (!$keywords['keywords'])
         {
-            $params['keywords'] = $this->keywords;
+            $params['keywords'] = $Gkeywords;
         }else
         {
-            $params['keywords'] = $this->keywords.', '.$keywords['keywords']; 
+            $params['keywords'] = $Gkeywords.', '.$keywords['keywords']; 
         }
-        $params['position'] = $this->getPosition($page);
+        //$params['position'] = $this->getPosition($page);
+        $page = $this->getDoctrine()->getRepository('yomaahBundle:Page')->findBy(array('pageUrl' => $page));
+        $params['position'] = $page[0]->getPosition();
         return $params;
     }
 
@@ -181,7 +186,8 @@ class MainController extends Controller
     static function getRepoAdminContentList($object)
     {
         $modifiable = array('marquesAdmin' => 'Marque',
-                    'promotionsAdmin' => 'Promotion');
+            'promotionsAdmin' => 'Promotion',
+            'pagesAdmin' => 'Page');
         if (array_key_exists($object, $modifiable))
         {
             return $modifiable[$object];
@@ -204,7 +210,6 @@ class MainController extends Controller
                 if (preg_match('/date/',urldecode($tmp[0])) == 1)
                 {
                     $date = preg_replace('/\//','-',urldecode($tmp[1]));
-                    var_dump($date);
                     $obj['set'.ucfirst($tmp[0])] = new \Datetime($date);
                     
                 }else
@@ -223,7 +228,7 @@ class MainController extends Controller
                 }
                 $elem = null;
             }
-            if (($repo =$this->getRepoAdminContentList($object))!= false)
+            if (($repo = $this->getRepoAdminContentList($object)) != false)
             {
                 $element = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:'.$repo)->find($id); 
                 foreach($obj as $key=>$val)
