@@ -315,3 +315,51 @@ $(document).on('click','.sup',function(){
         });
     },{ 'dialog' : 'deleteElement', 'element' : lien});
 });
+$(document).on('click', '.modif', function(){
+
+    sendAjax('ajax/dialog', function (data){
+        var galerie = data;
+        $(galerie).dialog({
+            width : "1000",
+            height : "700",
+            modal : true,
+            buttons : {
+                "Appliquer" : function (){
+                
+                },
+                "Supprimer" : function (){
+                
+                },
+                "Fermer" : function (){
+                    $(this).dialog("close");
+                }
+            }
+        });
+        var url = makeUrl();
+        var donnee = { 'lien' : lien };
+        sendAjax('ajax/imagesAdminStructure', function (data) {
+            var structure = data;
+            $.getJSON(url[0]+"ajax/imagesAdmin", donnee, function (data){
+                $.each(data, function (key,val){
+                    var tmp = structure;
+                    var article = null;
+                    article = tmp.replace(/pngUrl/g, val);
+                    $('.imageDisplay').append(article);
+                });
+            });
+        }, { 'lien' : lien });
+    }, { 'dialog' : 'images', 'element' : lien});
+
+});
+$(document).on('click', 'input[type="checkbox"]', function (){
+    if (!$(this).attr('checked'))
+    {
+        var elem = $(this);
+        $('input[type="checkbox"]').each(function (){
+            if (!$(this).is(elem))
+            {
+                $(this).attr('checked', false);
+            }
+        });
+    }
+});

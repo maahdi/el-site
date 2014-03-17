@@ -2,6 +2,7 @@
 
 namespace EuroLiterie\structureBundle\Controller;
 
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -267,6 +268,39 @@ class MainController extends Controller
                 $element = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:'.$repo)->getNew();
                 return new JsonResponse($element);
             }
+        }
+    }
+
+    public function imagesAdminStructureAction()
+    {
+        return new Response('<section class="logoGalerie">
+                    <input type="hidden" value="pngUrl" />
+                    <figure class="adminMarqueLogo"><img src="../../bundles/euroliteriestructure/images/marques/pngUrl"></img></figure>
+                    <input type="checkbox" name="check" />
+                </section>');
+        
+    }
+
+    public function imagesAdminAction($objet)
+    {
+        $subject = explode('Admin', $objet);
+        $tmp = explode('Controller',__DIR__);
+        $rootDir = $tmp[0].'Resources/public/images/'.$subject[0];
+
+        $finder = new Finder();
+        $f = $finder->depth('== 0')->files()->notname('/~$/')->in($rootDir);
+        if (count($f) > 0)
+        {
+            $tmp = array();
+            foreach ($f as $file)
+            {
+                $tmp[] = explode ($rootDir.'/', $file);
+            }
+            foreach ($tmp as $file)
+            {
+                $files[] = $file[1];
+            }
+            return new JsonResponse($files);
         }
     }
 }
