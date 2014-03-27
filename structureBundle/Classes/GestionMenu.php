@@ -1,11 +1,9 @@
 <?php
-
 namespace EuroLiterie\structureBundle\Classes;
+
+use Yomaah\structureBundle\Classes\BundleDispatcher;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 
 /**
  * Classe pour remplir les menus
@@ -14,34 +12,40 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  **/
 class GestionMenu
 {
-    private $container;
+    private $db;
+    private $em;
+    private $secure;
+    private $session;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(\Doctrine\ORM\EntityManager $em, \Doctrine\DBAL\Connection $db, SecurityContextInterface $secure, Session $session)
     {
-        $this->container = $container;
+        $this->session = $session;
+        $this->db = $db;
+        $this->em = $em;
+        $this->secure = $secure;
     }
+
     public function getAllMenu()
     {
-        $request = $this->container->get('request');
-        if (!(preg_match('/ajax/',$request->getPathInfo())))
-        {
-            return $this->getMenu($request);
-        }else
-        {
-            return array(false);
-        }
+        //$request = $this->container->get('request');
+        //if (!(preg_match('/ajax/',$request->getPathInfo())))
+        //{
+            //return $this->getMenu($request);
+        //}else
+        //{
+            //return array(false);
+        //}
+        return $this->getMenu();
     }
 
-    public function getMenu($request)
+    public function getMenu()
     {
-        $session = $request->getSession();
-        $secure = $this->container->get('security.context');
-        $user = $secure->getToken()->getUser();
+        $user = $this->secure->getToken()->getUser();
         /**
          * L'utilisateur doit être connecter
          * soit un client soit moi
          **/
-        if ($secure->getToken() != null)
+        if ($this->secure->getToken() != null)
         {
             /**
              * Partie pour tester le site avec mon identifiant
@@ -63,15 +67,15 @@ if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
 }
 
  */
-            if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
+            if ((!($user == "anon."))&& $this->secure->isGranted('ROLE_ADMIN'))
             {
-                if ($secure->isGranted('ROLE_SUPER_ADMIN'))
+                if ($this->secure->isGranted('ROLE_SUPER_ADMIN'))
                 {
                     $menus = $this->getMenuFromRepo('left','Menu');
-                    if (($session->get('zoneAdmin') != null) && $session->get('zoneAdmin'))
+                    if (($this->session->get('zoneAdmin') != null) && $this->session->get('zoneAdmin'))
                     {
                         $this->setAdminMenu($menus);
-                        $session->set('idSite', 1);
+                        //$session->set('idSite', 1);
                         return $this->getRetour('admin',$menus);
                     }else
                     {
@@ -80,19 +84,19 @@ if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
 
                 }else
                 {
-                    $sitesAvailables = $user->getSites();
+                    //$sitesAvailables = $user->getSites();
                     $auth = false;
                     /**
                      * vérifie que le site appartient bien à l'utilisateur qui le visite
                      */
-                    foreach ($sitesAvailables as $site)
-                    {
-                        if ($site->getNomSite() == 'literie')
-                        {
-                            $session->set('idSite', 1);
-                            $auth = true;
-                        }
-                    }
+                    //foreach ($sitesAvailables as $site)
+                    //{
+                        //if ($site->getNomSite() == 'literie')
+                        //{
+                            //$session->set('idSite', 1);
+                            //$auth = true;
+                        //}
+                    //}
                     $menus = null;
                     if ($auth)
                     {
@@ -101,7 +105,7 @@ if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
                     /**
                      * pour simuler connexion à la zone admin
                      */
-                    if (($session->get('zoneAdmin') != null) && $session->get('zoneAdmin'))
+                    if (($this->session->get('zoneAdmin') != null) && $this->session->get('zoneAdmin'))
                     {
                         $this->setAdminMenu($menus);
                         return $this->getRetour('admin',$menus);
@@ -128,16 +132,15 @@ if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
     }
     private function getVisite()
     {
-        $db = $this->container->get('database_connection');
         $sql = 'select count(idVisite) as nb from visites as v left join utilisateur as u on v.idUser = u.idUser where u.idGroup !=1 or v.idUser = 0';
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         $result->setFetchMode(\PDO::FETCH_OBJ);
         foreach ($result as $r)
         {
             $visite['total'] = $r->nb;
         }
         $sql = 'select count(idVisite) as nb from visites as v left join utilisateur as u on v.idUser = u.idUser where extract( month from current_date) = extract( month from dateConnexion) and (u.idGroup != 1 or v.idUser = 0)';
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         $result->setFetchMode(\PDO::FETCH_OBJ);
         foreach ($result as $r)
         {
@@ -188,7 +191,7 @@ if ((!($user == "anon."))&& $secure->isGranted('ROLE_ADMIN'))
 $site = null;
          */
         $site = 1;
-        return $this->container->get('doctrine.orm.default_entity_manager')->getRepository('yomaahBundle:'.$menu)->$fn($site);
+        return $this->em->getRepository('yomaahBundle:'.$menu)->$fn($site);
     }
 
 }
