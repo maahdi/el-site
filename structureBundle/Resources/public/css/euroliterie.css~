@@ -1,3 +1,4 @@
+﻿
 @font-face
 {
     font-family :'Istok Web' , serif;
@@ -45,12 +46,8 @@ body
 {
     margin-top : 1em;
     background:none;
+    padding-left:5em;
     border:none;
-    margin-left : 7em;
-    border : 1px solid black;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
 }
 
 .article table tr
@@ -62,18 +59,17 @@ body
 {
     display:inline-block;
     text-align : left;
-    /*font-family : "Istok Web";*/
+    /*font-family : "Volkhov";*/
+    margin-left : 7em;
 }
 
 .jour
 {
-    font-weight : bold;
-    width : 10em;
+    width : 5em;
 }
 
 .fermer
 {
-    font-weight : bold;
     width : 100%;
 }
 .article table tr:nth-child(even)
@@ -84,7 +80,7 @@ body
 
 .article table tr:nth-child(odd)
 {
-    background:#fff;
+    background:none;
 }
 
 .art-adresse
@@ -190,19 +186,13 @@ footer
 {
     display:block;
     width : 103%;
-    margin-top:-0.60em;
+    margin-top:-0.65em;
     margin-left:-1.5%;
     background-color : #cdd3ed;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
     line-height : 2em;
-}
-
-h1,h2,h3,
-#div-pos h5
-{
-    font-family : "Istok Web", "serif";
 }
 #position
 {
@@ -223,7 +213,7 @@ h1,h2,h3,
     font-size:1.7em;
     margin-bottom:7%;
     margin-top:3%;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 }
 #border
 {
@@ -243,7 +233,7 @@ h1,h2,h3,
 
 article
 {
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 }
 
 .a-promotion
@@ -252,7 +242,7 @@ article
     font-size:0.8em;
     padding-left:2%;
     margin-bottom : 1em;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 }
 .promo-content
 {
@@ -261,7 +251,7 @@ article
     padding-right : 9%;
     color:red;
     text-align:justify;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 
 }
 .promotion
@@ -278,7 +268,7 @@ article
     border-bottom : 1px solid black;
     background-color: #2a4674;
     height : auto;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 }
 
 .promotion:first-child .promo-titre
@@ -294,7 +284,7 @@ article
     font-size:1.2em;
     padding-left:3%;
     text-align:center!important;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 
 }
 .border-left
@@ -312,7 +302,7 @@ article
     font-size:1.5em;
     line-height : 2em;
     color: #e4f30c;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 }
 .art-titre h1 
 {
@@ -324,17 +314,17 @@ article
 .art-titre h1
 {
     color :#2a4674;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 }
 
 .art-titre h1:before
 {
-    content:'~ ';
+    content:'- ';
 }
 
 .art-titre h1:after
 {
-    content:' ~';
+    content:' -';
 }
 .art-content
 {
@@ -417,7 +407,7 @@ article
     color:#474747;
     background:#414141;
     padding:0.4em;
-    /*font-family:"fonty";*/
+    font-family:"fonty";
 }
 
 .marque section
@@ -481,7 +471,7 @@ article
 
 .marque-content
 {
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
     font-size : 1em;
     margin-top : 0.5em;
     font-size : 0.8em;
@@ -508,7 +498,7 @@ article
 .horizontal section h3
 {
     font-size : 1.2em;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
     -webkit-transform:rotate(90deg);
     -moz-transform:rotate(90deg);
     -o-transform:rotate(90deg);
@@ -620,7 +610,7 @@ article
     border-left: 1px solid #393942;
     border-right: 1px solid #4f5058;
     font-size: 13px;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
     color: #e4f30c;
     text-shadow: 1px 1px 1px rgba(0,0,0, .6);
     -webkit-transition: color .2s ease-in-out;
@@ -693,7 +683,6 @@ article
     width:103%;
     height: 14.5em;
     border: 4px solid #2a4674;
-    border-bottom : none;
     -webkit-border-radius:0px 5px 0px 5px;
     -moz-border-radius:0px 5px 0px 0px;
     border-radius:5px 5px 0px 0px;
@@ -797,7 +786,7 @@ body{
 {
     width:100%;
     vertical-align: middle;
-    /*font-family : "Volkhov";*/
+    font-family : "Volkhov";
 }
 .vertical section:after
 {
@@ -846,6 +835,10 @@ body{
     height : 10em;
 }
 
+.article table
+{
+    padding-left:0em;
+}
 
 .article table tr
 {
@@ -893,14 +886,8 @@ body{
 }
 #div-pos
 {
-    margin-top:-0.40em;
-    width : 105.4%;
+    width : 105%;
     margin-left: -3%;
-}
-
-#div-pos h5
-{
-    font-size : 0.7em;
 }
 #logo img
 {
@@ -935,7 +922,7 @@ body{
 .literie-menu
 {
     height : 3em;
-    width : 106.4%;
+    width : 105.6%;
     left : -1.05em;
 }
 .literie-menu li

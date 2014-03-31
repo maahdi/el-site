@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class PromotionRepo extends EntityRepository
 {
-    public function getHtml()
+    public function getHtml($param)
     {
         return '<div class="admin-c prom border">
                     <input type="hidden" name="id" value="%id%">

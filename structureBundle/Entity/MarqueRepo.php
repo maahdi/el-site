@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class MarqueRepo extends EntityRepository 
 {
-    public function getHtml()
+    public function getHtml($url)
     {
         return '<div class="marq admin-c border">
                     <input type="hidden" name="id" value="%idMarque%">
@@ -23,7 +23,7 @@ class MarqueRepo extends EntityRepository
                             <label>Lien :</label><input type="text" name="marqueLien" value="%marqueLien%">
                         </article>
                         <article class="adminLogoMarque">
-                            <label>Logo :</label><figure class="adminMarqueLogo"><img src="../../bundles/euroliteriestructure/images/marques/%pngUrl%"></img></figure>
+                            <label>Logo :</label><figure class="adminMarqueLogo"><img src="'.$url.'marques/%pngUrl%"></img></figure>
                             <section class="btn-logo modif">
                                 <li>Modifier</li>
                             </section>
