@@ -30,14 +30,14 @@
 </head>
 <html>
 <body>
-    {%if literie_admin is defined and literie_admin%}
+    {%if connectClient is defined and connectClient%}
         {% include 'EuroLiteriestructureBundle:Main:barAdmin.html.twig' %}
     {%endif%}
     {%if app.session.get('mobile') %}
     {%else%}
         {% include 'EuroLiteriestructureBundle:Main:menu.html.twig' %}
         {# A enlever#}
-        {#{% include 'yomaahBundle:Main:main-bar1.html.twig' %}#}
+        {% include 'yomaahBundle:Main:main-bar1.html.twig' %}
         {##}
     {%endif%}
     <div class="row">
@@ -57,11 +57,11 @@
         </footer>
     </div>
     {% if app.session.get('mobile') == false %}
-        {#<p id="back-top">#}
-            {#<a href="#top"><span></span>Haut de page</a>#}
-        {#</p>#}
+        <div id="back-top">
+            <a href="#top"><span></span></a>
+        </div>
     {%endif%}
-    {%if literie_admin is defined and literie_admin%}
+    {%if connectClient is defined and connectClient%}
         {% include 'yomaahBundle:Toolbar:toolbar.html.twig' %}
         {% include 'yomaahBundle:Toolbar:addArticleToolBar.html.twig' %}
         <script type="text/javascript" src="{{asset('bundles/yomaah/js/monHallo.js')}}"></script>

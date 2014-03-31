@@ -1,0 +1,25 @@
+
+<div class="row">
+    <div class="small-12 columns">
+        <ul class="literie-menu" id="menu-left">
+            {%if menus is defined%}
+                {%for menu in menus%}
+                    {%if  menu.path == 'literie_marques'%}
+                        <li><a href="{{path(menu.path)}}#Epeda">{{ menu.name }}</a>
+                    {%else%}
+                        <li><a href="{{path(menu.path)}}">{{ menu.name }}</a>
+                    {%endif%}
+                        </li>
+                {%endfor%}
+            {%endif%}
+        </ul>
+    </div>  
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        <div id="lol">
+            <figure class="left" id="logo"><a href="{{path('literie_accueil')}}"><img src="{{ asset('bundles/euroliteriestructure/images/logo.png')}}"/></a></figure>
+        </div>
+    </div>
+</div>
+

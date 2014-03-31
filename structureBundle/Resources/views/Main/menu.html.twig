@@ -8,8 +8,8 @@
 <div class="row">
     <div class="small-12 columns">
         <ul class="literie-menu" id="menu-left">
-            {%if menus is defined%}
-                {%for menu in menus%}
+            {%if menusClient is defined%}
+                {%for menu in menusClient%}
                     {%if  menu.path == 'literie_marques'%}
                         <li><a href="{{path(menu.path)}}#Epeda">{{ menu.name }}</a>
                     {%else%}
@@ -28,9 +28,9 @@
                 <li><a href="{{path('admin_literie')}}">Admin</a></li>
                 <li><a href="{{path('decoadmin_literie')}}">Deco Admin</a></li>
             {%endif%}
-            {%if (literie_admin is defined and literie_admin)%}
-                    <li><a href="{{path('post_log')}}"><span class="right">Se Déconnecter</span></a></li>
-            {%endif%}
+            {#{%if (connect is defined and connect)%}#}
+                    {#<li><a href="{{path('post_log')}}"><span class="right">Se Déconnecter</span></a></li>#}
+            {#{%endif%}#}
         </ul>
         
 

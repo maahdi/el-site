@@ -26,12 +26,14 @@ class PromotionRepo extends EntityRepository
                             <label>Description :</label><textarea class="textareaPromo" name="promoInfo">%promoInfo%</textarea>
                         </article>
                     </section>
+                    <section class="btn-adminPanel">
                         <article class="btn-admin maj">
                             <li>Mettre à jour</li>
                         </article>
                         <article class="btn-admin sup">
                             <li>Supprimer</li>
                         </article>
+                    </section>
                 </div>';
     }
 
@@ -47,6 +49,8 @@ class PromotionRepo extends EntityRepository
         $promo->setTag('periode');
         $promo->setDateDebut(new \Datetime());
         $promo->setDateFin(new \Datetime('+7 days'));
+        $promo->setPromoInfo('-90% !!');
+        $promo->setPromoDesc('Sur tout nos produits !');
         $em = $this->getEntityManager();
         $em->persist($promo);
         $em->flush();

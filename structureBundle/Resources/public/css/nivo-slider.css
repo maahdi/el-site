@@ -8,6 +8,7 @@
  */
  
 /* The Nivo Slider styles */
+
 .nivoSlider {
 	position:relative;
 	width:100%;
@@ -66,7 +67,7 @@
 	background:#000;
 	color:#fff;
 	width:100%;
-    z-index:8;
+	z-index:8;
 	padding: 5px 10px;
 	opacity: 0.8;
 	overflow: hidden;
@@ -87,6 +88,7 @@
 .nivo-html-caption {
     display:none;
 }
+
 /* Direction nav styles (e.g. Next & Prev) */
 .nivo-directionNav a {
 	position:absolute;
@@ -115,16 +117,14 @@
 .futurico-theme.slider-wrapper
 {
     position : relative;
-    /*left:41.5%;*/
     width:90%;
     height:auto;
-    /*width:100%;*/
-    /*height:24%;*/
     margin:0;
     margin-top: 5%;
     margin-left:6%;
     margin-bottom:5%;
     padding: 5px;
+    z-index : 4;
     background-color : #141517;
     -moz-border-radius: 5px;
     -webkit-border-radius :5px;
@@ -132,22 +132,20 @@
     border-color : black;
 }
 
-.futurico-theme.nivoSlider
+.futurico-theme .nivoSlider
 {
-    
     position:relative;
-    width:70%;
+    width:auto;
     height:auto;
-    /*width : 100%;*/
-    /*height : 24%;*/
 }
 
 .futurico-theme .nivoSlider img
 {
     display:none;
+    z-index : 3;
     position:absolute;
-    width : 100%;
     height : auto;
+    max-height : 160px;
     top:0;
     left:0;
 }

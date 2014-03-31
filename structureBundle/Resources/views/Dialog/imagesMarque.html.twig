@@ -1,0 +1,20 @@
+<div style="overflow:auto;">
+    <section class="imageDisplay art-titre">
+        <h1>Logos disponibles</h1>
+    </section>
+    <section class="newImage art-titre">
+        <h1>Nouveau logo</h1>
+        <form id="sleeker" enctype="multipart/form-data" name="sleeker" method="post" action="ajax/uploadImage">
+            <input type="hidden" value="9999999999" name="maxSize">
+            <input type="hidden" value="200" name="maxW">
+            <input type="hidden" value="255" name="colorR">
+            <input type="hidden" value="255" name="colorG">
+            <input type="hidden" value="255" name="colorB">
+            <input type="hidden" value="300" name="maxH">
+            <input type="hidden" value="filename" name="filename">
+            <input type="file" onchange="ajaxUpload(this.form,'ajax/uploadImage','upload_area','Envoie du ficher ! Attendez ...<br /><img src=\'../../bundles/euroliteriestructure/images/ajax_loader_blue.gif\' width=\'50\' height=\'10\' border=\'0\' />','<img src=\'../../bundles/euroliteriestructure/images/error.gif\' width=\'16\' height=\'16\' border=\'0\' /> Erreur durant l\'envoie, check settings and path info in source code.'); return false;" name="filename">
+        </form>
+        <div id="upload_area">
+        </div>
+    </section>
+</div>

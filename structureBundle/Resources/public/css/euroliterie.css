@@ -4,6 +4,12 @@
     font-family :'Volkhov' , serif;
 }
 
+body
+{
+    font-size :1em;
+    font-family : "Volkhov";
+    background-color: #a5aabf;
+}
 .courrier p:first-child:before
 {
     content:url('../images/courrier.png');
@@ -52,18 +58,20 @@
 .article table tr td
 {
     display:inline-block;
-    margin-left : 4em;
-    width : 20em;
     text-align : left;
     font-family : "Volkhov";
+    margin-left : 7em;
 }
 
 .jour
 {
-    width : 5em!important;
-    margin-left : 7em!important;
+    width : 5em;
 }
 
+.fermer
+{
+    width : 100%;
+}
 .article table tr:nth-child(even)
 {
 
@@ -137,27 +145,18 @@
     color: #0e9c07;    
 }
 
-body
-{
-    font-family : "Volkhov";
-    background-color: #a5aabf;
-}
 #corps
 {
-    /*background-color:#e6d8d8;*/
-    /*margin-top : -1em;*/
     background-color : #dbe1e2;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:3px;
-    /*margin-right:0;*/
     margin-bottom:-10px;
-    /*overflow:hidden;*/
     position :relative;
     display :block;
-    /*z-index : 0;*/
     width : 100%;
-    height : auto;
+    height : 100%;
+    min-height:30em;
     font-family : "Volkhov";
 }
 
@@ -187,21 +186,22 @@ footer
 {
     display:block;
     width : 103%;
-    margin-top:-0.85em;
+    margin-top:-0.65em;
     margin-left:-1.5%;
     background-color : #cdd3ed;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
+    line-height : 2em;
 }
 #position
 {
     width : 100%;
-    line-height : 2em;
     font-size:0.9em;
+    display:block;
     padding-left:2%;
     margin-bottom:5%;
-    /*margin-top:1%;*/
+    margin-top:1%;
     text-align:left;
     margin-bottom:1.7%;
 }
@@ -248,6 +248,7 @@ article
 {
 	font-size:0.8em;
     padding-left:12%;
+    padding-right : 9%;
     color:red;
     text-align:justify;
     font-family : "Volkhov";
@@ -262,7 +263,7 @@ article
 }
 .promo-titre
 {
-    margin-top:1em;
+    margin-top: 1em;
     border-top : 1px solid black;
     border-bottom : 1px solid black;
     background-color: #2a4674;
@@ -329,7 +330,7 @@ article
 {
     text-align:justify;
     font-size:0.9em;
-    margin-left:2%;
+    padding-left:2%;
     overflow-x:hidden!important;
     padding-right:2%;
 }
@@ -355,7 +356,7 @@ article
     bottom: 30px;
     z-index:2000;
     display:none;
-    left : 77%;
+    right : 5%;
 }
 #back-top a {
     width: 6em;
@@ -379,7 +380,7 @@ article
     height: 6em;;
     display: block;
 	margin-bottom: 7px;
-	background: #747b49 url(../images/haut.png) no-repeat center center;
+	background: #2a4674 url(../images/haut.png) no-repeat center center;
 	/* rounded corners */
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -394,7 +395,7 @@ article
 }
 .marques
 {
-    margin-top : 3em;
+    margin-top : 1em;
     width : 100%;
     height :auto;
 }
@@ -527,13 +528,6 @@ article
     -o-transform:rotate(0deg);
     transform:rotate(0deg);
 }
-/*.horizontal :target img*/
-/*{*/
-    /*display: inline-block;*/
-    /*position:relative;*/
-    /*top:-49px;*/
-    /*right: 1%;*/
-/*}*/
 .marque-link a:before
 {
     content :'Site internet : ';
@@ -568,6 +562,7 @@ article
     position :relative;
     height : auto;
 }
+
 .literie-menu,
 .literie-menu ul,
 .literie-menu li,
@@ -679,13 +674,10 @@ article
     border : none;
     border-bottom: 1px solid #353539;
 }
+
 #lol
 {
-  margin-top:4%!important;
-}
-#lol
-{
-    margin-top:0.5%;
+    /*margin-top:0.5%;*/
     margin-left:-1.5%;
     display:block;
     width:103%;
@@ -694,7 +686,7 @@ article
     -webkit-border-radius:0px 5px 0px 5px;
     -moz-border-radius:0px 5px 0px 0px;
     border-radius:5px 5px 0px 0px;
-    margin-bottom: -5px;
+    /*margin-bottom: -5px;*/
 }
 #logo{
     /*margin-left:-2%;*/
@@ -707,5 +699,243 @@ article
     margin-left:5%;
     width:90%;
     height: 14em;
+}
+
+
+@media screen and (max-width:780px){
+body{
+    font-size : 0.8em;
+}
+.art-titre
+{
+    font-size : 0.6em;
+}
+.promo-titre
+{
+    font-size : 0.6em;
+}
+.futurico-theme .nivo-controlNav,
+.futurico-theme .nivo-directionNav a
+{
+    opacity:0!important;
+}
+.promo-date
+{
+    font-size : 0.7em;
+    padding-right : 2%;
+}
+.promo-content p
+{
+    font-size : 0.8em;
+}
+.promotions
+{
+    left : -5%;
+}
+.art-content p
+{
+    padding-left : 0;
+    font-size : 0.8em;
+}
+
+
+.marque-content
+{
+    font-size : 0.8em;
+    margin-bottom:0;
+}
+
+.marque-link a
+{
+    font-size : 0.9em;
+    margin-top : 0.8em;
+}
+.marque
+{
+    width : 100%;
+    height : 760px;
+}
+.vertical img
+{
+    display:none;
+}
+
+.vertical section
+{
+    width:100%;
+    -webkit-transition:height 0.2s ease-out;
+    -moz-transition:height 0.2s ease-out;
+    -o-transition:height 0.2s ease-out;
+    transition:height 0.2s ease-out;
+    display : block;
+}
+.vertical :target
+{
+    height:330px;
+    width:97%;
+}
+.vertical section h3 
+{
+    display : block;
+    width : 100%;
+    line-height : 1.5em;
+    vertical-align: middle;
+    padding-left: 2%;
+}
+.vertical section h3 a
+{
+    width:100%;
+    vertical-align: middle;
+    font-family : "Volkhov";
+}
+.vertical section:after
+{
+    top:10px;
+    left:810px;
+}
+.vertical section:target:after
+{
+    left:-9999px;
+}
+
+.vertical :target h3
+{
+    top : -4em;
+}
+.literie-menu
+{
+    height : 3em;
+    width : 107%;
+    left : -0.55em;
+}
+.literie-menu li
+{
+    height : 3em;
+    width : 25%;
+}
+
+.literie-menu li a
+{
+    line-height : 2.9em;
+    font-size : 0.8em;
+    vertical-align : middle;
+}
+#lol
+{
+    border: none;
+    width : 103%;
+    height : 10em;
+    margin-bottom:0.2em;
+}
+
+#logo img
+{
+    margin-left : 0;
+    width : 103%;
+    height : 10em;
+}
+
+.article table
+{
+    padding-left:0em;
+}
+
+.article table tr
+{
+    font-size:0.8em;
+}
+.fermer
+{
+    margin-left :5em!important;
+}
+
+.jour
+{
+    margin-left : 5em!important;
+}
+.courrier
+{
+    margin-top :0;
+}
+.form-email
+{
+    width : 100%;
+    padding-left :0;
+}
+#div-pos
+{
+    width : 107.5%;
+    margin-top:-0.50em;
+    margin-left: -4%;
+}
+
+.futurico-theme.slider-wrapper
+{
+    width:89%;
+}
+.futurico-theme .nivoSlider img
+{
+    max-height : 60px;
+}
+}
+
+@media screen and (max-width:780px) and ( orientation : landscape){
+.futurico-theme .nivoSlider img
+{
+    max-height : 100px;
+}
+#div-pos
+{
+    width : 105%;
+    margin-left: -3%;
+}
+#logo img
+{
+    height : 15em;
+    
+}
+
+.vertical :target
+{
+    height:230px;
+}
+.marque
+{
+    height : 650px;
+}
+.literie-menu li a
+{
+    font-size :1.5em;
+}
+.literie-menu li
+{
+    height : 8em;
+}
+.literie-menu
+{
+    height : 8em;
+}
+.promotions
+{
+    left : 0;
+}
+.literie-menu
+{
+    height : 3em;
+    width : 105.6%;
+    left : -1.05em;
+}
+.literie-menu li
+{
+    height : 3em;
+    width : 20%;
+}
+
+.literie-menu li a
+{
+    line-height : 2.9em;
+    font-size : 0.8em;
+    vertical-align : middle;
+}
 }
 

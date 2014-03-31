@@ -69,3 +69,43 @@ body
 #annonceSecond{
     margin-top:1%;
 }
+
+@media screen and (max-width:1280px){
+#logoAccueil
+{
+    height:18em;
+    left:-10%;
+    margin-top:8%;
+}
+#logoAccueil figure img
+{
+    height:11em;
+    vertical-align:middle;
+}
+#annonce,#annonceSecond
+{
+    margin-bottom : 2em;
+}
+
+}
+@media screen and (max-width:1280px) and ( orientation : landscape){
+#annonce,#annonceSecond
+{
+    /*margin-bottom : 2em;*/
+}
+#annonce
+{
+    margin-top : 5%;
+}
+#logoAccueil
+{
+    height:18em;
+    /*left:-10%;*/
+    margin-top:2%;
+}
+#logoAccueil figure img
+{
+    height:18em;
+    vertical-align:middle;
+}
+}
