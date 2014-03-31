@@ -25,12 +25,10 @@
                         </li>
                     {%endif%}
                 {%endfor%}
-                <li><a href="{{path('admin_literie')}}">Admin</a></li>
-                <li><a href="{{path('decoadmin_literie')}}">Deco Admin</a></li>
             {%endif%}
-            {#{%if (connect is defined and connect)%}#}
-                    {#<li><a href="{{path('post_log')}}"><span class="right">Se Déconnecter</span></a></li>#}
-            {#{%endif%}#}
+            {%if (connectClient is defined and connectClient)%}
+                    <li><a href="{{path('post_log')}}"><span class="right">Se Déconnecter</span></a></li>
+            {%endif%}
         </ul>
         
 

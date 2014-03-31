@@ -2,12 +2,14 @@
 @font-face
 {
     font-family :'Volkhov' , serif;
+    font-family :'Istok Web' , serif;
 }
 
 body
 {
     font-size :1em;
     font-family : "Volkhov";
+    font-family : "Istok Web";
     background-color: #a5aabf;
 }
 .courrier p:first-child:before
@@ -59,7 +61,7 @@ body
 {
     display:inline-block;
     text-align : left;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
     margin-left : 7em;
 }
 
@@ -157,7 +159,7 @@ body
     width : 100%;
     height : 100%;
     min-height:30em;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 }
 
 footer
@@ -170,7 +172,7 @@ footer
     background: url("../images/bandeau_bot.png") repeat-x;
     background-size: 100% 100%;
     border-radius:0px 0px 5px 5px; 
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 }
 
 #position
@@ -213,7 +215,7 @@ footer
     font-size:1.7em;
     margin-bottom:7%;
     margin-top:3%;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 }
 #border
 {
@@ -233,7 +235,7 @@ footer
 
 article
 {
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 }
 
 .a-promotion
@@ -242,7 +244,7 @@ article
     font-size:0.8em;
     padding-left:2%;
     margin-bottom : 1em;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 }
 .promo-content
 {
@@ -251,7 +253,7 @@ article
     padding-right : 9%;
     color:red;
     text-align:justify;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 
 }
 .promotion
@@ -268,7 +270,7 @@ article
     border-bottom : 1px solid black;
     background-color: #2a4674;
     height : auto;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 }
 
 .promotion:first-child .promo-titre
@@ -284,7 +286,7 @@ article
     font-size:1.2em;
     padding-left:3%;
     text-align:center!important;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 
 }
 .border-left
@@ -302,7 +304,7 @@ article
     font-size:1.5em;
     line-height : 2em;
     color: #e4f30c;
-    font-family : "Volkhov";
+    /*font-family : "Volkhov";*/
 }
 .art-titre h1 
 {

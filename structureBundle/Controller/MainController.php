@@ -15,7 +15,7 @@ class MainController extends Controller implements AjaxInterface
 {
     public function indexAction()
     {
-        $this->get('session')->set('idSite', 1);
+        //$this->get('session')->set('idSite', 1);
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:index.html.twig');
     }
 
@@ -24,29 +24,30 @@ class MainController extends Controller implements AjaxInterface
         $promotions = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Promotion')->findBy(array('tag'=>'periode'), array('dateDebut' => 'asc'));
         $i =0;
         $actuel = array();
-        $avenir = array();
+        //$avenir = array();
         foreach ($promotions as $promo)
         {
             if ($promo->getActuel())
             {
                 $actuel[] = $promo;
                 $i++;
-            }else
-            {
-                $avenir[] = $promo;
             }
+            //else
+            //{
+                //$avenir[] = $promo;
+            //}
         }
         if ($i == 0)
         {
             $actuel = false;
         }
-        if (count($avenir) ==0)
-        {
-            $avenir = false;
-        }
+        //if (count($avenir) ==0)
+        //{
+            //$avenir = false;
+        //}
         $params = $this->getParams('accueil');
         $params['actuel'] = $actuel;
-        $params['avenir'] = $avenir;
+        //$params['avenir'] = $avenir;
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig', $params);
     }
 
@@ -216,12 +217,23 @@ class MainController extends Controller implements AjaxInterface
             return new JsonResponse($element);
         }
     }
+    private function getDeployedImagesUrl()
+    {
+        $dispatcher = $this->get('bundleDispatcher');
+        if ($dispatcher->getDeployed())
+        {
+            return '../bundles/euroliteriestructure/images/';
+        }else
+        {
+            return '../../bundles/euroliteriestructure/images/';
+        }
+    }
 
     public function logoAdminStructureAction()
     {
         return new Response('<section class="logoGalerie">
                     <input type="hidden" value="pngUrl" />
-                    <figure class="adminMarqueLogo"><img src="../../bundles/euroliteriestructure/images/marques/pngUrl"></img></figure>
+                    <figure class="adminMarqueLogo"><img src="'.$this->getDeployedImagesUrl().'marques/pngUrl"></img></figure>
                     <input type="checkbox" name="check" />
                 </section>');
     }
@@ -230,14 +242,14 @@ class MainController extends Controller implements AjaxInterface
     {
         if (($repo = $this->getRepoAdminContentList($param['lien'])) != false)
         {
-            $response = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:'.$repo)->getHtml(); 
+            $response = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:'.$repo)->getHtml($this->getDeployedImagesUrl()); 
         }else if ($param['lien'] == 'GkeywordsAdmin')
         {
             $keyRepo = new KeywordsRepo();
             $response = $keyRepo->getHtml();
         }else if ($param['lien'] == 'sliderAdmin')
         {
-            $response = $this->get('templating')->render('EuroLiteriestructureBundle:Ajax:imagesSlider.html.twig');
+            $response = $this->get('templating')->render('EuroLiteriestructureBundle:Ajax:imagesSlider.html.twig',array('url' => $this->getDeployedImagesUrl()));
         }
         return new Response($response);
     }
@@ -274,7 +286,7 @@ class MainController extends Controller implements AjaxInterface
             $slider['inactive'] = AjaxController::imageSearch('slider/inactive', 'EuroLiterie/structureBundle');
             $slider['struct'] = '<article class="sliderImage">
                     <input type="hidden" value="%imgUrl%" />
-                    <figure><img src="../../bundles/euroliteriestructure/images/slider/%dossier%/%imgUrl%"></img></figure>
+                    <figure><img src="'.$this->getDeployedImagesUrl().'slider/%dossier%/%imgUrl%"></img></figure>
                     <input type="checkbox" name="check"/>
                 </article>';
             return new JsonResponse($slider);

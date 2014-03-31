@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('bundles/euroliteriestructure/css/monToolbar.css')}}">
     <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/fontawesome/css/font-awesome.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/jquery-ui-1.10.4.custom.min.css') }}" />
-    <link href='http://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
     {# A enlever#}
     <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/main-bar.css') }}" />
     {##}
@@ -36,9 +36,6 @@
     {%if app.session.get('mobile') %}
     {%else%}
         {% include 'EuroLiteriestructureBundle:Main:menu.html.twig' %}
-        {# A enlever#}
-        {% include 'yomaahBundle:Main:main-bar1.html.twig' %}
-        {##}
     {%endif%}
     <div class="row">
         <div id="corps" class="border-radius small-12 columns">
