@@ -15,7 +15,6 @@ class MainController extends Controller implements AjaxInterface
 {
     public function indexAction()
     {
-        //$this->get('session')->set('idSite', 1);
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:index.html.twig');
     }
 
@@ -45,7 +44,7 @@ class MainController extends Controller implements AjaxInterface
         //{
             //$avenir = false;
         //}
-        $params = $this->getParams('accueil');
+        $params = $this->getParams('literie_accueil');
         $params['actuel'] = $actuel;
         //$params['avenir'] = $avenir;
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig', $params);
@@ -86,7 +85,7 @@ class MainController extends Controller implements AjaxInterface
 
     public function marquesAction()
     {
-        $params = $this->getParams('marques');
+        $params = $this->getParams('literie_marques');
         $params['marques'] = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:marques.html.twig', $params);
     }
@@ -121,7 +120,7 @@ class MainController extends Controller implements AjaxInterface
             $this->get('session')->remove('envoie');
             $envoi = true;
         }
-        $params = $this->getParams('contact');
+        $params = $this->getParams('literie_contact');
         $h = new HoraireRepo();
         $params['horaires'] = $h->getHoraires();
         $params['form'] = $form->createView();
@@ -217,6 +216,7 @@ class MainController extends Controller implements AjaxInterface
             return new JsonResponse($element);
         }
     }
+
     private function getDeployedImagesUrl()
     {
         $dispatcher = $this->get('bundleDispatcher');
@@ -269,8 +269,15 @@ class MainController extends Controller implements AjaxInterface
 
     public function getAdminInterfaceAction(Array $param)
     {
-        $filename = $this->getRepoAdminContentList($param['lien']);
-        return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:AdminMenu:adminInterface'.$filename.'.html.twig');
+        if (($filename = $this->getRepoAdminContentList($param['lien'])) != false)
+        {
+            return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:AdminMenu:adminInterface'.$filename.'.html.twig');
+            
+        }else if ($param['lien'] == 'sliderAdmin')
+        {
+            return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:AdminMenu:adminInterfaceSlider.html.twig');
+        }
+
     }
 
     public function getAdminContentAction(Array $param)
