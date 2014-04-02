@@ -90,7 +90,7 @@ class MainController extends Controller implements AjaxInterface
 
     public function magasinAction()
     {
-        $params = $this->getParams('magasin');
+        $params = $this->getParams('literie_magasin');
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:magasin.html.twig',$params);
     }
 
