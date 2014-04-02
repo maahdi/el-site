@@ -21,30 +21,28 @@ class MainController extends Controller implements AjaxInterface
     public function accueilAction()
     {
         $promotions = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Promotion')->findBy(array('tag'=>'periode'), array('dateDebut' => 'asc'));
+        $params = $this->getParams('literie_accueil');
         $i =0;
-        $actuel = array();
-        //$avenir = array();
+        $actuel = false;
         foreach ($promotions as $promo)
         {
             if ($promo->getActuel())
             {
                 $actuel[] = $promo;
-                $i++;
             }
-            //else
-            //{
-                //$avenir[] = $promo;
-            //}
         }
-        if ($i == 0)
+        $file = AjaxController::imageSearch('/slider/active', 'EuroLiterie/structureBundle');
+        if (count($file) < 5)
         {
-            $actuel = false;
+            $params['slider'] = AjaxController::imageSearch('/slider/active', 'EuroLiterie/structureBundle');
+        }else
+        {
+            for ($i = 0; $i < 4; $i++)
+            {
+                $tmpFile[] = $file[$i];
+            }
+            $params['slider'] = $tmpFile;
         }
-        //if (count($avenir) ==0)
-        //{
-            //$avenir = false;
-        //}
-        $params = $this->getParams('literie_accueil');
         $params['actuel'] = $actuel;
         //$params['avenir'] = $avenir;
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig', $params);
@@ -250,6 +248,13 @@ class MainController extends Controller implements AjaxInterface
         }else if ($param['lien'] == 'sliderAdmin')
         {
             $response = $this->get('templating')->render('EuroLiteriestructureBundle:Ajax:imagesSlider.html.twig',array('url' => $this->getDeployedImagesUrl()));
+        }else if ($param['lien'] == 'sliderMiniature')
+        {
+            $response = '<article class="sliderImage">
+                    <input type="hidden" value="" />
+                    <figure><img src=""></img></figure>
+                    <input type="checkbox" name="check"/>
+                </article>';
         }
         return new Response($response);
     }
@@ -344,6 +349,10 @@ class MainController extends Controller implements AjaxInterface
                         && AjaxController::testFileExists('./bundles/euroliteriestructure/images/slider/active/', $file))
                     {
                         AjaxController::moveImage('slider/active/', 'slider/inactive/', $file, 'euroliteriestructure');
+
+                    }else if (AjaxController::testFileExists('./bundles/euroliteriestructure/images/slider/inactive', $file))
+                    {
+                        AjaxController::moveImage('slider/active/', 'slider/inactive/', $file, 'euroliteriestructure', time().$file);
                     }
                 }
             }
@@ -385,9 +394,9 @@ class MainController extends Controller implements AjaxInterface
             $img = $this->uploadSliderAction($file, $maxSize, $maxW, $colorR, $colorG, $colorB, $maxH);
         }
         if($img['imgUploaded'] === true){
-            return new Response ('<img src="../bundles/euroliteriestructure/images/success.gif" width="16" height="16" border="0" style="marin-bottom: -4px;" /> Success!<br /><img src="'.$img['image'].'" border="0" />');
+            return new Response ('<img src="../../bundles/euroliteriestructure/images/success.gif" width="16" height="16" border="0" style="marin-bottom: -4px;" /> Success!<br /><img src="'.$img['image'].'" border="0" />');
         }else{
-            $response = '<img src="../bundles/euroliteriestructure/images/error.gif" width="16" height="16px" border="0" style="marin-bottom: -3px;" /> Error(s) Found: ';
+            $response = '<img src="../../bundles/euroliteriestructure/images/error.gif" width="16" height="16px" border="0" style="marin-bottom: -3px;" /> Error(s) Found: ';
             foreach($img['errorList'] as $value){
                     $response .= $value.', ';
             }
@@ -445,11 +454,12 @@ class MainController extends Controller implements AjaxInterface
                     if (AjaxController::testFileExists('./bundles/euroliteriestructure/images/slider/active/', $png))
                     {
                         $dossierFile = $dossier.'active/';
+
                     }else if (AjaxController::testFileExists('./bundles/euroliteriestructure/images/slider/inactive/', $png))
                     {
                         $dossierFile = $dossier.'inactive/';
                     }
-                    AjaxController::deleteImage($dossier, $dossier.$dossierFile, $png, 'euroliteriestructure');
+                    AjaxController::deleteImage($dossier, $dossierFile, $png, 'euroliteriestructure');
                 }
             }
         }

@@ -397,45 +397,69 @@ $(document).on('click', '.upload', function(){
 });
 
 $(document).on('click', '.del', function (){
-    sendAjax('ajax/dialog' , function (data){
-        $(data).dialog({
+    var active = $('.sliderActiveAdmin').children();
+    var inactive = $('.sliderInactiveAdmin').children();
+    var toDel = new Array;
+    var nbToDel = 0;
+    var png = new Array;
+    var i = 0;
+    $.each(active, function(index){
+        if ($(this).children('input[type="checkbox"]').attr('checked'))
+        {
+            png[index] = $(this).children('input[type="hidden"]').first().val();
+            toDel[index] = $(this);
+            i = index;
+            nbToDel++;
+        }
+    });
+    $.each(inactive, function (index){
+        if ($(this).children('input[type="checkbox"]').attr('checked'))
+        {
+            png[index+i] = $(this).children('input[type="hidden"]').first().val();
+            toDel[index+i] = $(this);
+            nbToDel ++;
+        }
+    });
+    if (nbToDel > 0)
+    {
+        sendAjax('ajax/dialog' , function (data){
+            $(data).dialog({
+                modal : true,
+                buttons : {
+                    "Oui" : function (){
+                        var dialog = $(this);
+                        sendAjax('ajax/deleteImage', function (data){
+                            dialog.dialog("close");
+                            $.each(toDel, function (){
+                                $(this).remove();
+                            });
+                            $('<div><p>Suppression réussi</p></div>').dialog({
+                                modal : true,
+                                buttons : {
+                                    "Close" : function (){
+                                        $(this).dialog("close");
+                                    }
+                                }
+                            })
+                        }, { 'lien' : lien, 'png' : png });
+                    },
+                    "Non" : function (){
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        }, { 'lien' : lien, 'dialog' : 'deleteElement' });
+    }else
+    {
+        $('<div><p>Veuillez sélectionner au moins une image !</p></div>').dialog({
             modal : true,
             buttons : {
-                "Oui" : function (){
-                    var png = new Array;
-                    var i = null;
-                    $('.sliderActiveAdmin').children().each(function (index){
-                        if ($(this).children('input[type="checkbox"]').attr('checked'))
-                        {
-                            png[index] = $(this).children('input[type="hidden"]').first().val();
-                            i = index;
-                        }
-                    });
-                    $('.sliderInactiveAdmin').each(function (index){
-                        if ($(this).children('input[type="checkbox"]').attr('checked'))
-                        {
-                            png[index+i] = $(this).children('input[type="hidden"]').first().val();
-                        }
-                    });
-                    var dialog = $(this);
-                    sendAjax('ajax/deleteImage', function (data){
-                        dialog.dialog("close");
-                        $('<div><p>Suppression réussi</p></div>').dialog({
-                            modal : true,
-                            buttons : {
-                                "Close" : function (){
-                                    $(this).dialog("close");
-                                }
-                            }
-                        })
-                    }, { 'lien' : lien, 'png' : png });
-                },
-                "Non" : function (){
+                "Fermer" : function (){
                     $(this).dialog("close");
                 }
             }
-        });
-    }, { 'lien' : lien, 'dialog' : 'deleteElement' });
+        })
+    }
 });
 
 $(document).on('click', '.down', function(){
@@ -549,7 +573,7 @@ $(document).on('click', '.add-btn', function (){
 });
 var img = null;
 $(document).on('click', '.modif', function(){
-    var pngActuel = $(this).parent().children('figure').children('img').attr('src').match(/([a-zA-Z]+\-[a-zA-Z]+|[a-zA-Z]+)\.(png|jpg|jpeg)/);
+    var pngActuel = $(this).parent().children('figure').children('img').attr('src').match(/([a-zA-Z0-9]+\-[a-zA-Z0-9]+|[a-zA-Z0-9]+)\.(png|jpg|jpeg)/);
     img = $(this).parent().children('figure').children('img');
     var id = $(this).parent().parent().parent().children('input');
     sendAjax('ajax/dialog', function (data){
@@ -590,7 +614,7 @@ $(document).on('click', '.modif', function(){
                                     if ($(this).attr('checked'))
                                     {
                                         var png = $(this).parent();
-                                        var pngUrl = png.children('figure').children('img').first().attr('src').match(/([a-zA-Z]+\-([a-zA-Z]+|)|[a-zA-Z]+)\.(png|jpg|jpeg)/);
+                                        var pngUrl = png.children('figure').children('img').first().attr('src').match(/([a-zA-Z0-9]+\-([a-zA-Z0-9]+|)|[a-zA-Z0-9]+)\.(png|jpg|jpeg)/);
                                         sendAjax('ajax/deleteImage', function (data){
                                             png.remove();
                                             dialog.dialog("close");
@@ -707,26 +731,39 @@ function ajaxUpload(form,url_action,id_element,html_show_loading,html_error_http
         $m('ajax-temp').src = cross;
         if (lien == 'marquesAdmin')
         {
-            sendAjax('ajax/logoAdminStructure', function (data){
-                var src = $('#upload_area').children('img').last().attr('src');
-                var pngUrl = src.match(/([a-zA-Z]+\-([a-zA-Z]+|)|[a-zA-Z]+)\.(png|jpg|jpeg)/);
-                if (!(pngUrl == null))
-                {
-                    $('.imageDisplay').append(data);
-                    $('.imageDisplay').children('.logoGalerie').last().children('.adminMarqueLogo').first().children('img').first().attr('src', src );
-                    $('.imageDisplay').children('.logoGalerie').last().children('input[type="hidden"]').attr('value', pngUrl[0]);
-                }
-            }, { 'lien' : lien });
+            setTimeout(function (){
+                sendAjax('ajax/logoAdminStructure', function (data){
+                    var src = $('#upload_area').children('img').last().attr('src');
+                    var pngUrl = src.match(/([a-zA-Z0-9]+\-([a-zA-Z0-9]+|)|[a-zA-Z0-9]+)\.(png|jpg|jpeg)/);
+                    if (!(pngUrl == null))
+                    {
+                        $('.imageDisplay').append(data);
+                        $('.imageDisplay').children('.logoGalerie').last().children('.adminMarqueLogo').first().children('img').first().attr('src', src );
+                        $('.imageDisplay').children('.logoGalerie').last().children('input[type="hidden"]').attr('value', pngUrl[0]);
+                    }
+                }, { 'lien' : lien });
+            }, 250);
         }else if (lien == 'sliderAdmin')
         {
             setTimeout(function (){
                 var src = $('#upload_area').children('img').last().attr('src');
-                var pngUrl = src.match(/([a-zA-Z]+\-([a-zA-Z]+|)|[a-zA-Z]+)\.(png|jpg|jpeg)/);
-                var newImg = $('.sliderImage').first().clone(true);
-                newImg.children('figure').children('img').first().attr('src', src);
-                newImg.children('input[type="hidden"]').attr('value', pngUrl[0]);
-                var html = '<article class="sliderImage">'+newImg.html()+'</article>';
-                $('.sliderInactiveAdmin').append(html);
+                var pngUrl = src.match(/([a-zA-Z0-9]+\-([a-zA-Z0-9]+|)|[a-zA-Z0-9]+)\.(png|jpg|jpeg)/);
+                if ($('.sliderImage').length == 0 )
+                {
+                    sendAjax('ajax/adminContentStructure', function (data){
+                        var newImg = $(data);
+                        newImg.children('figure').children('img').first().attr('src', src);
+                        newImg.children('input[type="hidden"]').attr('value', pngUrl[0]);
+                        var html = '<article class="sliderImage">'+newImg.html()+'</article>';
+                        $('.sliderInactiveAdmin').append(html);
+                    },{ 'lien' : 'sliderMiniature' });
+                }else{
+                    var newImg = $('.sliderImage').first().clone(true);
+                    newImg.children('figure').children('img').first().attr('src', src);
+                    newImg.children('input[type="hidden"]').attr('value', pngUrl[0]);
+                    var html = '<article class="sliderImage">'+newImg.html()+'</article>';
+                    $('.sliderInactiveAdmin').append(html);
+                }
             }, 250);
         }
 		if(detectWebKit){
@@ -746,4 +783,8 @@ function ajaxUpload(form,url_action,id_element,html_show_loading,html_error_http
 	if(html_show_loading.length > 0){
 		$m(id_element).innerHTML = html_show_loading;
 	}
+}
+function wait(action)
+{
+    setTimeout(action(),200);
 }

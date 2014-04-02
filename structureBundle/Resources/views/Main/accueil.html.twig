@@ -19,10 +19,9 @@
     <div class="small-5 columns">
         <div class="slide slider-wrapper futurico-theme">
             <div id="slider" class="nivoSlider">
-                <img src="{{ asset('bundles/euroliteriestructure/images/nue1.png')}}" alt="">
-                <img src="{{ asset('bundles/euroliteriestructure/images/nue2.png')}}" alt="">
-                <img src="{{ asset('bundles/euroliteriestructure/images/literie1.jpg')}}" alt="">
-                <img src="{{ asset('bundles/euroliteriestructure/images/literie2.jpg')}}" alt="">
+                {%for file in slider%}
+                    <img src="{{ asset('bundles/euroliteriestructure/images/slider/active/'~file)}}" alt=""/>
+                {%endfor%}
             </div>
         </div>
     </div>
