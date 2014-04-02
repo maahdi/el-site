@@ -1,12 +1,14 @@
-<div class="row">
-    <div class="small-12 columns">
-        <div id="lol">
-            <figure class="left" id="logo"><a href="{{path('literie_accueil')}}"><img src="{{ asset('bundles/euroliteriestructure/images/logo.png')}}"/></a></figure>
-        </div>
+<div id="banniere">
+    <div class="row">
+        <div class="small-12 columns">
+            <figure class="border-radius-perso" id="logo">
+                <a href="{{path('literie_accueil')}}"><img src="{{ asset('bundles/euroliteriestructure/images/logo.png')}}"/></a>
+            </figure>
+            <section>Le site d'Euro Literie à Mont de Marsan</section>
+        </div>  
     </div>
 </div>
 <div class="row">
-    <div class="small-12 columns">
         <ul class="literie-menu" id="menu-left-literie">
             {%if menusClient is defined%}
                 {%for menu in menusClient%}
@@ -27,13 +29,14 @@
                 {%endfor%}
             {%endif%}
             <li><a href="{{path('admin_literie')}}">Admin</a></li>
-            <li><a href="{{path('decoadmin_literie')}}">DecoAdmin</a></li>
+            <li><a href="{{path('decoadmin_literie')}}">Admin</a></li>
             {#{%if (connectClient is defined and connectClient)%}#}
-                    {#<li><a href="{{path('post_log')}}"><span class="right">Se Déconnecter</span></a></li>#}
+                    {#<li><a href="{{path('logout')}}"><span class="right">Se Déconnecter</span></a></li>#}
             {#{%endif%}#}
         </ul>
-        
-
-    </div>  
+        <ul class="social-menu">
+            <li><figure><img src="{{ asset('bundles/euroliteriestructure/images/facebook.png')}}"/></figure></li>
+            <li><figure><img src="{{ asset('bundles/euroliteriestructure/images/google-plus.png')}}"/></figure></li>
+        </ul>
 </div>
 

@@ -2,19 +2,19 @@
 {%extends 'EuroLiteriestructureBundle:Main:layout.html.twig' %}
 
 {%block body%}
-<div class="articles small-12 columns marge">
-        <div class="article border-article marge">
+    <div class="articles small-12 columns">
+        <div class="article border-article">
             <article class="art-titre"><h1>Connexion</h1></article>
-{% if error %}
-<div>{{ error.message }}</div>
-{% endif %}
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Login :</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" autofocus />
-    <label for="password">Mot de passe :</label>
-    <input type="password" id="password" name="_password" value="test" />
-    <button type="submit">Login</button>
-</form>
+            {% if error %}
+                <div>{{ error.message }}</div>
+            {% endif %}
+            <form class="marge" action="{{ path('login_check') }}" method="post">
+                <label for="username">Login :</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" autofocus />
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="_password" value="test" />
+                <button type="submit">Login</button>
+            </form>
         </div>
-</div>
+    </div>
 {%endblock%}

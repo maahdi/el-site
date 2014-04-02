@@ -33,16 +33,59 @@
     {%if app.session.get('mobile') %}
     {%else%}
         <link rel="stylesheet" href="{{ asset('bundles/yomaah/css/main-bar.css') }}" />
-        {% include 'yomaahBundle:Main:main-bar1.html.twig' %}
+        {% include 'yomaahBundle:Main:main-bar1.html.twig'%}
         {% include 'EuroLiteriestructureBundle:Main:menu.html.twig' %}
     {%endif%}
     <div class="row">
-        <div id="corps" class="border-radius small-12 columns">
-            <div id="div-pos" class="border-radius">
-                <h5 id="position">{{position}}</h1>
-            </div>
+        <div id="div-pos" class="border-radius">
+            <h5 id="position">{{position}}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div id="corps-border" class="border-radius small-12 columns">
+            <div id="corps">
+                <div class="row">
     {%block body%}
     {%endblock%}
+        {%if hide is defined and hide%}
+        </div>
+        {%else%}
+                <div class="small-5 columns">
+                    <div id="border">
+                        <div class="slide slider-wrapper futurico-theme">
+                            <div id="slider" class="nivoSlider">
+                                {%for file in slider%}
+                                    <img src="{{ asset('bundles/euroliteriestructure/images/slider/active/'~file)}}" alt=""/>
+                                {%endfor%}
+                            </div>
+                        </div>
+                        <div class="promotions">
+                            <article class="promotion">
+                                {%if actuel != false and actuel|length > 1 %}
+                                    <article class="promo-titre"><h2>Promotions du moment</h2></article>
+                                {%else%}
+                                    <article class="promo-titre"><h2>Promotion du moment</h2></article>
+                                {%endif%}
+                                    <section class="promo-background">
+                                {%if actuel != false%}
+                                    {%for promotion in actuel%}
+                                        <article class="promo-date"><h2>Du {{promotion.dateDebut}} au {{promotion.dateFin}}</h2></article>
+                                        <section class="promo-content"><p>{{promotion.PromoDesc | raw}}</p>
+                                        </section>
+                                        <a class="a-promotion" ref=#>Plus d'infos ...</a>
+                                    {%endfor%}
+                                {%else%}
+                                    <article class="promo-date"><h2>Aucune promotions en cours</h2></article>
+                                {%endif%}
+                                    </section>
+                            </article> 
+                        </div>
+                    </div>
+                </div>
+            {#Fermeture div de l'ouverture class="row dans le template include"#}
+            </div>
+            {%endif%}
+            </div>
         </div>
     </div>
     <div id ="footer" class="row">

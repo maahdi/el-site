@@ -104,20 +104,21 @@
 }
 /* Control nav styles (e.g. 1,2,3...) */
 .nivo-controlNav {
-	text-align:center;
-	padding: 15px 0;
+    display:none;
+	/*text-align:center;*/
+	/*padding: 15px 0;*/
 }
-.nivo-controlNav a {
-	cursor:pointer;
-}
-.nivo-controlNav a.active {
-	font-weight:bold;
-}
+/*.nivo-controlNav a {*/
+	/*cursor:pointer;*/
+/*}*/
+/*.nivo-controlNav a.active {*/
+	/*font-weight:bold;*/
+/*}*/
 
 .futurico-theme.slider-wrapper
 {
     position : relative;
-    width:90%;
+    /*width:90%;*/
     height:auto;
     margin:0;
     margin-top: 5%;
@@ -126,9 +127,9 @@
     padding: 5px;
     z-index : 4;
     background-color : #141517;
-    -moz-border-radius: 5px;
-    -webkit-border-radius :5px;
-    border-radius: 5px;
+    /*-moz-border-radius: 5px 0px 0px 5px;*/
+    /*-webkit-border-radius :5px 0px 0px 5px;*/
+    /*border-radius: 5px 0px 0px 5px;*/
     border-color : black;
 }
 
@@ -174,7 +175,7 @@
 
 }
 
-.futurico-theme .nivo-controlNav a.active,
+/*.futurico-theme .nivo-controlNav a.active,*/
 .futurico-theme .nivo-caption span
 {
     background: #a5cd4e;
