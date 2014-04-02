@@ -19,12 +19,12 @@ $container->setDefinition(
 );
 
 */
-//$container->setDefinition('literie_gestionMenu',
-    //new Definition ('EuroLiterie\structureBundle\Classes\GestionMenu',
-        //array(new Reference('doctrine.orm.entity_manager'), new Reference('database_connection'), new Reference('security.context'), new Reference('session')))
-//);
+$container->setDefinition('literie_gestionMenu',
+    new Definition ('EuroLiterie\structureBundle\Classes\GestionMenu',
+        array(new Reference('doctrine.orm.entity_manager'), new Reference('bundleDispatcher')))
+);
 
 
-//$menutwig = new Definition('EuroLiterie\structureBundle\Classes\MenuTwigExtension',array(new Reference('literie_gestionMenu')));
-//$menutwig->addTag('twig.extension');
-//$container->setDefinition('literie_menuTwigExtension',$menutwig);
+$menutwig = new Definition('EuroLiterie\structureBundle\Classes\MenuTwigExtension',array(new Reference('literie_gestionMenu')));
+$menutwig->addTag('twig.extension');
+$container->setDefinition('literie_menuTwigExtension',$menutwig);
