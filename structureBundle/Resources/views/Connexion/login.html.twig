@@ -2,9 +2,11 @@
 {%extends 'EuroLiteriestructureBundle:Main:layout.html.twig' %}
 
 {%block body%}
-    <div class="articles small-12 columns">
+    <div class="articles">
         <div class="article border-article">
             <article class="art-titre"><h1>Connexion</h1></article>
+                <article class="triangle-top"></article>
+                <article class="triangle-bot"></article>
             {% if error %}
                 <div>{{ error.message }}</div>
             {% endif %}

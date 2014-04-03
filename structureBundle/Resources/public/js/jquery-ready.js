@@ -324,8 +324,8 @@ function openWindow(button, action, width, height)
     var id = $(button).parent().children('input[type="hidden"]').first().val();
     $.ajax({
         type : 'POST',
-        url : 'http://localhost/workspace/framework/web/app_dev.php/'+action,
-        data : { 'id' : id },
+        url : '../'+action,
+        data : { 'id' : id, 'lien':'promoInfo' },
         success : function (data){
             var html = '<div>'+data+'</div>';
             $(html).dialog({

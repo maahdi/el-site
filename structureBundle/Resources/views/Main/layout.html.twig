@@ -79,7 +79,14 @@
                                         <article class="promo-date"><h2>Du {{promotion.dateDebut}} au {{promotion.dateFin}}</h2></article>
                                         <section class="promo-content"><p>{{promotion.PromoDesc | raw}}</p>
                                         </section>
-                                        <a class="a-promotion" ref=#>Plus d'infos ...</a>
+                                        {%if app.session.get('mobile') == false%}
+                                            <a id="a-promotion" ref=#>Plus d'infos ...</a>
+                                            <script type="text/javascript">
+                                                document.getElementById('a-promotion').onclick =function(){
+                                                 openWindow(this,'ajax/adminContentStructure', '500', '300');
+                                                }
+                                            </script>
+                                        {%endif%}
                                     {%endfor%}
                                 {%else%}
                                     <article class="promo-date"><h2>Aucune promotions en cours</h2></article>

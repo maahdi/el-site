@@ -215,23 +215,35 @@ class MainController extends Controller implements AjaxInterface
 
     public function getAdminContentStructureAction(Array $param)
     {
-        if (($repo = $this->getRepoAdminContentList($param['lien'])) != false)
+        $dispatcher = $this->get('bundleDispatcher');
+        if ($dispatcher->isAdmin())
         {
-            $response = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:'.$repo)->getHtml($this->getDeployedImagesUrl()); 
-        }else if ($param['lien'] == 'GkeywordsAdmin')
+            if (($repo = $this->getRepoAdminContentList($param['lien'])) != false)
+            {
+                $response = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:'.$repo)->getHtml($this->getDeployedImagesUrl()); 
+
+            }else if ($param['lien'] == 'GkeywordsAdmin')
+            {
+                $keyRepo = new KeywordsRepo();
+                $response = $keyRepo->getHtml();
+
+            }else if ($param['lien'] == 'sliderAdmin')
+            {
+                $response = $this->get('templating')
+                    ->render('EuroLiteriestructureBundle:Ajax:imagesSlider.html.twig',array('url' => $this->getDeployedImagesUrl()));
+
+            }else if ($param['lien'] == 'sliderMiniature')
+            {
+                $response = '<article class="sliderImage">
+                        <input type="hidden" value="" />
+                        <figure><img src=""></img></figure>
+                        <input type="checkbox" name="check"/>
+                    </article>';
+            }           
+        }else if ($param['lien'] == 'promoInfo')
         {
-            $keyRepo = new KeywordsRepo();
-            $response = $keyRepo->getHtml();
-        }else if ($param['lien'] == 'sliderAdmin')
-        {
-            $response = $this->get('templating')->render('EuroLiteriestructureBundle:Ajax:imagesSlider.html.twig',array('url' => $this->getDeployedImagesUrl()));
-        }else if ($param['lien'] == 'sliderMiniature')
-        {
-            $response = '<article class="sliderImage">
-                    <input type="hidden" value="" />
-                    <figure><img src=""></img></figure>
-                    <input type="checkbox" name="check"/>
-                </article>';
+            $promo = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Promotion')->find($param['id']);
+            $response = '<div><p>'.$promo->getPromoInfo().'</p></div>';
         }
         return new Response($response);
     }
@@ -279,7 +291,9 @@ class MainController extends Controller implements AjaxInterface
                     <input type="checkbox" name="check"/>
                 </article>';
             return new JsonResponse($slider);
+
         }
+
     }
 
     public function deleteLogoAction($param)
