@@ -67,6 +67,7 @@ class MainController extends Controller implements AjaxInterface
     public function magasinAction()
     {
         $params = $this->getParams('literie_magasin');
+        $params['images'] = AjaxController::imageSearch('galerie', 'EuroLiterie/structureBundle');
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:magasin.html.twig',$params);
     }
 

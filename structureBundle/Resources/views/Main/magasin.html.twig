@@ -1,4 +1,33 @@
 {% extends 'EuroLiteriestructureBundle:Main:layout.html.twig' %}
 {%block body%}
-<div class="article">Ici je pensais faire juste une galerie avec des quelques photos !!</div><br /><br /><br /><br />
+    <div class="articles ">
+            <article class="article">
+                <article class="art-titre not-editable"><h1>Notre équipe</h1></article>
+                <article class="triangle-top"></article>
+                <article class="triangle-bot"></article>
+                <section class="art-content">
+                {%for article in articles if article.tagName == 'equipe'%}
+                    <input type="hidden" name="id" value="{{article.id}}"/>
+                    <article class="art-sstitre"><h2>{{ article.artTitle}}</h2></article>
+                    <figure><img src="{{asset('bundles/euroliteriestructure/images/castor.jpg')}}" /></figure>
+                    <article class="art-sscontent">{{ article.artContent | raw}}</article>
+                {%endfor%}
+                </section>
+            </article>
+            {%for article in articles if article.tagName == 'magasin'%}
+                <article class="article">
+                    <input type="hidden" name="id" value="{{article.id}}"/>
+                    <article class="art-titre"><h1>{{article.artTitle}}</h1></article>
+                    <article class="triangle-top"></article>
+                    <article class="triangle-bot"></article>
+                    <section class="art-content">{{article.artContent | raw}}
+                    </section>
+                        <article class="galerie-photo">
+                        {%for image in images%}
+                            <figure><img src="{{ asset('bundles/euroliteriestructure/images/galerie/'~image)}}" /></figure>
+                        {%endfor%}
+                        </article>
+                </article>
+            {%endfor%}
+    </div>
 {%endblock%}
