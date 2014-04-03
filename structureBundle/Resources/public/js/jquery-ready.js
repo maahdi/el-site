@@ -14,7 +14,6 @@ $(window).ready(function(){
         nextText:'>'
     });
 
-
     $('.sectionAdmin').mouseover(function(){
         cssBtnAdmin($(this));
     });
