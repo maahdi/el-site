@@ -749,15 +749,15 @@ footer
 }
 .marque section:target section
 {
-    display:inline-block;
+    display:block;
     width:98.5%;
     margin-bottom:-4%;
     margin-top:-1%;
     background:#fff;
 }
-
 .marque-content
 {
+    position : relative;
     font-size : 1em;
     margin-top : 0.5em;
     font-size : 0.8em;
@@ -767,6 +767,10 @@ footer
     padding-right: 0.8em;
     color : black;
 }
+.marque-content p
+{
+    display : inline-block;
+}
 .marque-link
 {
     padding-right:0.8em;
@@ -774,8 +778,8 @@ footer
 }
 .marque-img
 {
-    width : auto;
-    height:30%;
+    width : 20%;
+    height:15%;
     position : relative;
 }
 .marque-img img
