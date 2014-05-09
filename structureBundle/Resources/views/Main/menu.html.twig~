@@ -4,13 +4,7 @@
             <figure class="border-radius-perso" id="logo">
                 <a href="{{path('literie_accueil')}}"><img src="{{ asset('bundles/euroliteriestructure/images/logo.png')}}"/></a>
             </figure>
-            {#<article class="message">#}
-                {#<section>Le site d'Euro Literie</section>#}
-                {#<section>à Mont de Marsan</section>#}
-            {#</article>#}
-            <figure class="border-radius-perso-right" id="logoRight">
-                <a href="{{path('literie_accueil')}}"><img src="{{ asset('bundles/euroliteriestructure/images/logo.png')}}"/></a>
-            </figure>
+            <section>Le site d'Euro Literie à Mont de Marsan</section>
         </div>  
     </div>
 </div>
@@ -20,9 +14,9 @@
                 {%for menu in menusClient%}
                     {%if clientAdmin is defined and clientAdmin%}
                         {%if  menu.path == 'literie_marques'%}
-                    <li><a href="{{path('admin', { 'path' : menu.path })}}#Epeda">{{ menu.name }}</a>
+                            <li><a href="{{path('admin', {'path' : menu.path } )}}#Epeda">{{ menu.name }}</a>
                         {%else%}
-                            <li><a href="{{path('admin', { 'path' : menu.path })}}">{{ menu.name }}</a>
+                        <li><a href="{{path('admin', { 'path' : menu.path })}}">{{ menu.name }}</a>
                         {%endif%}
                         {%if menu.sousMenu is defined%}
                             <ul>
@@ -51,11 +45,8 @@
                     {%endif%}
                 {%endfor%}
             {%endif%}
-            {%if superAdmin is defined and superAdmin%}
-            {%else%}
             <li><a href="{{path('admin_literie')}}">Admin</a></li>
             <li><a href="{{path('decoadmin_literie')}}">DecoAdmin</a></li>
-            {%endif%}
             {#{%if (connectClient is defined and connectClient)%}#}
                     {#<li><a href="{{path('logout')}}"><span class="right">Se Déconnecter</span></a></li>#}
             {#{%endif%}#}

@@ -24,6 +24,38 @@ class MainController extends Controller implements AjaxInterface
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig', $params);
     }
 
+    public function getAdminParams($page, $em, $dispatcher)
+    {
+        $params['articles'] = $em->getRepository('yomaahBundle:Article')
+                ->findByPage(array('pageUrl' => $page,'idSite' => $dispatcher->getIdSite()));
+        $keywords = $em->getRepository('yomaahBundle:Page')->findKeywords($page, $dispatcher->getIdSite());
+        $repoKeyword = new KeywordsRepo();
+        $Gkeywords = $repoKeyword->getGeneralKeywords();
+        if (!$keywords['keywords'])
+        {
+            $params['keywords'] = $Gkeywords;
+        }else
+        {
+            $params['keywords'] = $Gkeywords.', '.$keywords['keywords']; 
+        }
+        $p = $em->getRepository('yomaahBundle:Page')->findPageByUrl(array('pageUrl' => $page, 'idSite' => $dispatcher->getIdSite()));
+        $params['position'] = $p->getPosition();
+        switch($page)
+        {
+        case 'literie_marques':
+            $params['marques'] = $em->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
+            break;
+        case 'literie_magasin':
+            $params['images'] = AjaxController::imageSearch('galerie', 'EuroLiterie/structureBundle');
+            break;
+        case 'literie_contact':
+            $h = new HoraireRepo();
+            $params['horaires'] = $h->getHoraires();
+            $params['envoie'] = false;
+        }
+        return $params;
+    }
+
     private function getParams($page)
     {
         $dispatcher = $this->get('bundleDispatcher');
@@ -39,8 +71,18 @@ class MainController extends Controller implements AjaxInterface
         {
             $params['keywords'] = $Gkeywords.', '.$keywords['keywords']; 
         }
-        $page = $this->getDoctrine()->getRepository('yomaahBundle:Page')->findPageByUrl(array('pageUrl' => $page, 'idSite' => $dispatcher->getIdSite()));
-        $params['position'] = $page->getPosition();
+        $p = $this->getDoctrine()->getRepository('yomaahBundle:Page')->findPageByUrl(array('pageUrl' => $page, 'idSite' => $dispatcher->getIdSite()));
+        $params['position'] = $p->getPosition();
+
+        switch($page)
+        {
+        case 'literie_marques':
+            $params['marques'] = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
+            break;
+        case 'literie_magasin':
+            $params['images'] = AjaxController::imageSearch('galerie', 'EuroLiterie/structureBundle');
+            break;
+        }
         return $params;
     }
 
@@ -60,14 +102,12 @@ class MainController extends Controller implements AjaxInterface
     public function marquesAction()
     {
         $params = $this->getParams('literie_marques');
-        $params['marques'] = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:marques.html.twig', $params);
     }
 
     public function magasinAction()
     {
         $params = $this->getParams('literie_magasin');
-        $params['images'] = AjaxController::imageSearch('galerie', 'EuroLiterie/structureBundle');
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:magasin.html.twig',$params);
     }
 
@@ -211,6 +251,18 @@ class MainController extends Controller implements AjaxInterface
                     <figure class="adminMarqueLogo"><img src="'.$this->getDeployedImagesUrl().'marques/pngUrl"></img></figure>
                     <input type="checkbox" name="check" />
                 </section>');
+    }
+    public function atteindreAction(Array $param)
+    {
+        $url = $param['url'];
+        if ($param['lien'] == 'marquesAdmin')
+        {
+            $url .= '/admin_marques';
+        }else
+        {
+            $url .= '/admin_accueil';
+        }
+        return new Response($url);
     }
 
     public function getAdminContentStructureAction(Array $param)

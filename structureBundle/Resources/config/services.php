@@ -19,12 +19,16 @@ $container->setDefinition(
 );
 
 */
+$container->setDefinition('literieController',
+    new Definition('EuroLiterie\structureBundle\Controller\MainController'));
+
 $container->setDefinition('literie_gestionMenu',
     new Definition ('EuroLiterie\structureBundle\Classes\GestionMenu',
         array(new Reference('doctrine.orm.entity_manager'), new Reference('bundleDispatcher')))
 );
 
 
-$menutwig = new Definition('EuroLiterie\structureBundle\Classes\MenuTwigExtension',array(new Reference('literie_gestionMenu')));
+$menutwig = new Definition('EuroLiterie\structureBundle\Classes\MenuTwigExtension',
+                    array(new Reference('literie_gestionMenu'), new Reference('bundleDispatcher')));
 $menutwig->addTag('twig.extension');
 $container->setDefinition('literie_menuTwigExtension',$menutwig);

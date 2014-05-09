@@ -341,6 +341,11 @@ function openWindow(button, action, width, height)
         }
     });
 }
+$(document).on('click', '.att-btn', function(){
+    sendAjax('ajax/atteindre', function(data){
+        window.location.replace(data);
+    }, { 'lien': lien});
+});
 $(document).on('click', '.up', function(){
     var active = $('.sliderActiveAdmin').children();
     var nbToMove = 0;

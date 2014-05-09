@@ -1,0 +1,62 @@
+﻿<?xml version="1.0"?>
+<site>
+    <admin>
+        <navBar id="marques">
+            <title>Marques</title>
+            <toolBar>
+                <button class="add-btn"/>
+                <button class="att-btn"/>
+                <url>literie_marques</url>
+            </toolBar>
+            <displayContent>
+                <entity>Marque</entity>
+                <template>marque</template>
+            </displayContent>
+        </navBar>
+        <navBar id="promotions">
+            <title>Promotions</title>
+            <toolBar>
+                <button class="add-btn"/>
+                <button class="att-btn"/>
+                <url>literie_accueil</url>
+            </toolBar>
+            <displayContent>
+                <entity>Promotion</entity>
+                <template>promotion</template>
+            </displayContent>
+        </navBar>
+        <navBar id="pages">
+            <title>Mot-Clés</title>
+            <displayContent>
+                <xml>keyworlds</xml>
+            </displayContent>
+        </navBar>
+        <navBar id="slider">
+            <title>Slider</title>
+        </navBar>
+        <navBar id="equipe">
+            <title>Equipe</title>
+            <toolbar>
+                <button class="add-btn"/>
+                <button class="att-btn"/>
+                <url>literie_magasin</url>
+            </toolbar>
+            <displayContent>
+                <entity>Article</entity>
+                <template>equipe</template>
+            </displayContent>
+        </navBar>
+        <navBar id="magasin">
+            <title>Magasin</title>
+            <toolbar>
+                <button class="att-btn"/>
+                <url>literie_magasin</url>
+            </toolbar>
+            <displayContent>
+                <entity>Article</entity>
+                <template>magasin</template>
+            </displayContent>
+        </navBar>
+    </admin>
+    <keyworlds>Salut noob</keyworlds>
+</site>
