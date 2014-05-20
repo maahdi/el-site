@@ -1,18 +1,21 @@
 
 $(window).ready(function(){
-    $('#slider').nivoSlider(
-    {
-        effect: 'fade',
-        slices : 15,
-        animSpeed:550,
-        pauseTime:4000,
-        directionNav : true,
-        pauseOnHover : false,
-        directionNavHide: true,
-        captionOpacity: 1,
-        prevText:'<',
-        nextText:'>'
-    });
+    if ($('#border').css('display') != 'none' && $('#slider').length > 0){
+        $('#slider').nivoSlider(
+        {
+            effect: 'fade',
+            slices : 15,
+            animSpeed:550,
+            pauseTime:4000,
+            directionNav : true,
+            pauseOnHover : false,
+            directionNavHide: true,
+            captionOpacity: 1,
+            prevText:'<',
+            nextText:'>'
+        });
+    
+    }
 
     $('.sectionAdmin').mouseover(function(){
         cssBtnAdmin($(this));
@@ -652,32 +655,32 @@ $(document).on('click', '.modif', function(){
     }, { 'dialog' : 'images', 'lien' : lien});
 });
 
-$(document).on('click', 'input[type="checkbox"]', function (){
-       if (lien == 'sliderAdmin'){
-            if ($(this).attr('checked'))
-            {
-                $(this).removeAttr('checked');
-            }else
-            {
-                $(this).attr('checked', true);
-            }
-        }else
-        {
-            if (!$(this).attr('checked'))
-            {
-                var elem = $(this);
-                $('input[type="checkbox"]').each(function (){
-                    if (!$(this).is(elem))
-                    {
-                        $(this).removeAttr('checked');
-                    }else
-                    {
-                        $(this).attr('checked', true);
-                    }
-                });
-            }
-        }
-});
+//$(document).on('click', 'input[type="checkbox"]', function (){
+       //if (lien == 'sliderAdmin'){
+            //if ($(this).attr('checked'))
+            //{
+                //$(this).removeAttr('checked');
+            //}else
+            //{
+                //$(this).attr('checked', true);
+            //}
+        //}else
+        //{
+            //if (!$(this).attr('checked'))
+            //{
+                //var elem = $(this);
+                //$('input[type="checkbox"]').each(function (){
+                    //if (!$(this).is(elem))
+                    //{
+                        //$(this).removeAttr('checked');
+                    //}else
+                    //{
+                        //$(this).attr('checked', true);
+                    //}
+                //});
+            //}
+        //}
+//});
 
 function $m(theVar){
 	return document.getElementById(theVar)

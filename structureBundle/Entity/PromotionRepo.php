@@ -43,6 +43,11 @@ class PromotionRepo extends EntityRepository
         return $query->getResult();
     }
 
+    public function findForAdmin()
+    {
+        return $this->findAll();
+    }
+
     public function getNew()
     {
         $promo = new Promotion ();

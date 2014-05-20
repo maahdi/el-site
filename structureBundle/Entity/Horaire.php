@@ -1,11 +1,14 @@
 <?php
 namespace EuroLiterie\structureBundle\Entity;
 
-class Horaire
+use JsonSerializable;
+
+class Horaire implements JsonSerializable
 {
     protected $jour;
     protected $matin;
     protected $aprem;
+    protected $fermer = false;
 
     public function getJour()
     {
@@ -19,7 +22,19 @@ class Horaire
 
     public function getMatin($position)
     {
-        return $this->matin[$position]->format('G\hi');
+        if ($this->fermer)
+        {
+            return 'Fermé';
+        }else{
+            return $this->matin[$position]->format('G\hi');
+        }
+    }
+
+    public function setFermer($jour)
+    {
+        $this->jour = $jour;
+        $this->fermer = true;
+        return $this;
     }
 
     public function setMatin($matin, $position)
@@ -33,10 +48,18 @@ class Horaire
         }
         return $this;
     }
+    public function getFermer()
+    {
+        return $this->fermer;
+    }
 
     public function getAprem($position)
     {
-        return $this->aprem[$position]->format('G\hi');
+        if (!($this->fermer))
+        {
+
+            return $this->aprem[$position]->format('G\hi');
+        }
     }
 
     public function setAprem($aprem, $position)
@@ -65,6 +88,15 @@ class Horaire
     private function setIntoDate($heure)
     {
         return \Datetime::createFromFormat('G:i',$heure);
+    }
+
+    public function jsonSerialize()
+    {
+        return array('jour' => $this->jour,
+                    'matin' => array('debut' => $this->getMatin('debut'),
+                                    'fin' => $this->getMatin('fin')),
+                    'aprem' => array('debut' => $this->getAprem('debut'),
+                                    'fin' => $this->getAprem('fin')));
     }
 }
 

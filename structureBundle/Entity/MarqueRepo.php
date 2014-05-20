@@ -53,4 +53,8 @@ class MarqueRepo extends EntityRepository
         $sql = 'select p from EuroLiteriestructureBundle:Marque p where p.idMarque = (select max(m.idMarque) from EuroLiteriestructureBundle:Marque m)';
         return $em->createQuery($sql)->getSingleResult();
     }
+    public function findForAdmin()
+    {
+        return $this->findAll();
+    }
 }

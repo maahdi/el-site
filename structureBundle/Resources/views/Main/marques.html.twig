@@ -15,9 +15,9 @@
                         <section id="{{marque.NomMarque}}">
                                 <h3><a href="#{{marque.NomMarque}}">{{marque.nomMarque}}</a></h3>
                             <article>
-                                <figure class="marque-img"><img src="{{asset('bundles/euroliteriestructure/images/marques/'~marque.pngUrl)}}"></img></figure>
-                                <section class="content">
+                                <section class="mcontent">
                                     <article class="marque-content">
+                                        <figure class="marque-img"><img src="{{asset('bundles/euroliteriestructure/images/marques/'~marque.pngUrl)}}"></img></figure>
                                         <p>{{marque.content | raw}}</p>
                                     </article>
                                     <article class="marque-link">
@@ -34,4 +34,10 @@
 <script>
 $('html,body').animate({ scrollTop : $('#logo').offset().top}, 'slow');
 </script>
+{%if app.session.get('mobile')%}
+<script>
+$('#border').css({'display' : 'none'});
+$('.articles').css({'width' : '95%'});
+</script>
+{%endif%}
 {%endblock%}

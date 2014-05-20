@@ -30,9 +30,10 @@
         <matin debut="9:30" fin="12:00"/>
         <aprem debut="14:30" fin="19:00"/>
     </jour>
-    <!--<jour>-->
-        <!--<name>Dimanche</name>-->
-        <!--<matin debut="0:00" fin="00:00"/>-->
-        <!--<aprem debut="00:00" fin="00:00"/>-->
-    <!--</jour>-->
+    <jour>
+        <fermer>true</fermer>
+        <name>Dimanche</name>
+        <matin debut="0:00" fin="00:00"/>
+        <aprem debut="00:00" fin="00:00"/>
+    </jour>
 </horaires>

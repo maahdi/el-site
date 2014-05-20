@@ -1,0 +1,31 @@
+<section class="onlinePanel">
+    <article class="onlineDesc"><span class="desc-title">Jour :</span>%jour%</article>
+    <article class="onlineContent">
+        <input type="hidden" value="%jour%" name="jour"/>
+        <div class="matin">
+            <span class="desc-title">Matin :</span><br/>
+            <div class="margin-left">
+                <span class="desc-title">De :</span>
+                <input type="hidden" name="matin-debut"/>
+                <article class="heure-display">%matin[debut]%</article>
+            </div>
+            <div class="margin-left"><span class="desc-title">à :</span>
+                <input type="hidden" name="matin-fin"/>
+                <article class="heure-display">%matin[fin]%</article>
+            </div>
+        </div>
+        <div class ="aprem">
+            <span class="desc-title">Aprem :</span><br/>
+            <div class="margin-left">
+                <input type="hidden" name="aprem-debut"/>
+                <span class="desc-title">De :</span>
+                <article class="heure-display">%aprem[debut]%</article>
+            </div>
+            <div class="margin-left">
+                <span class="desc-title">à :</span>
+                <input type="hidden" name="aprem-fin"/>
+                <article class="heure-display">%aprem[fin]%</article>
+            </div>
+        </div>
+    </article>
+</section>

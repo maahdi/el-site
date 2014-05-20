@@ -6,10 +6,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EuroLiterie\structureBundle\Entity\HoraireRepo;
-use EuroLiterie\structureBundle\Entity\KeywordsRepo;
+use Yomaah\structureBundle\Entity\KeywordsRepo;
 use Yomaah\structureBundle\Entity\MyMail;
 use Yomaah\structureBundle\Interfaces\AjaxInterface;
 use Yomaah\ajaxBundle\Controller\AjaxController;
+use Yomaah\ajaxBundle\Classes\ConfBuilder;
 
 class MainController extends Controller implements AjaxInterface
 {
@@ -23,14 +24,23 @@ class MainController extends Controller implements AjaxInterface
         $params = $this->getParams('literie_accueil');
         return $this->get('templating')->renderResponse('EuroLiteriestructureBundle:Main:accueil.html.twig', $params);
     }
+    public function getRepo($name)
+    {
+        $repo = array('horaires' => 'Horaire');
+        if (isset($repo[$name]))
+        {
+            $r = $repo[$name].'Repo';
+            return new HoraireRepo();
+        }
+    }
 
     public function getAdminParams($page, $em, $dispatcher)
     {
         $params['articles'] = $em->getRepository('yomaahBundle:Article')
                 ->findByPage(array('pageUrl' => $page,'idSite' => $dispatcher->getIdSite()));
         $keywords = $em->getRepository('yomaahBundle:Page')->findKeywords($page, $dispatcher->getIdSite());
-        $repoKeyword = new KeywordsRepo();
-        $Gkeywords = $repoKeyword->getGeneralKeywords();
+        $conf = new ConfBuilder($dispatcher);
+        $Gkeywords = $conf->getGeneralKeywords();
         if (!$keywords['keywords'])
         {
             $params['keywords'] = $Gkeywords;
@@ -46,7 +56,7 @@ class MainController extends Controller implements AjaxInterface
             $params['marques'] = $em->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
             break;
         case 'literie_magasin':
-            $params['images'] = AjaxController::imageSearch('galerie', 'EuroLiterie/structureBundle');
+            $params['images'] = AjaxController::imageSearch('galerie/magasin/active', 'EuroLiterie/structureBundle');
             break;
         case 'literie_contact':
             $h = new HoraireRepo();
@@ -62,8 +72,8 @@ class MainController extends Controller implements AjaxInterface
         $params['articles'] = $this->getDoctrine()->getRepository('yomaahBundle:Article')
                 ->findByPage(array('pageUrl' => $page,'idSite' => $dispatcher->getIdSite()));
         $keywords = $this->getDoctrine()->getRepository('yomaahBundle:Page')->findKeywords($page, $dispatcher->getIdSite());
-        $repoKeyword = new KeywordsRepo();
-        $Gkeywords = $repoKeyword->getGeneralKeywords();
+        $conf = new ConfBuilder($dispatcher);
+        $Gkeywords = $conf->getGeneralKeywords();
         if (!$keywords['keywords'])
         {
             $params['keywords'] = $Gkeywords;
@@ -80,7 +90,7 @@ class MainController extends Controller implements AjaxInterface
             $params['marques'] = $this->getDoctrine()->getRepository('EuroLiteriestructureBundle:Marque')->findAll();
             break;
         case 'literie_magasin':
-            $params['images'] = AjaxController::imageSearch('galerie', 'EuroLiterie/structureBundle');
+            $params['images'] = AjaxController::imageSearch('galerie/magasin/active', 'EuroLiterie/structureBundle');
             break;
         }
         return $params;

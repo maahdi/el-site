@@ -161,8 +161,8 @@ h1,h2,h3,h4,h5,h6
 .admin-content input, .admin-content textarea,
 .form-email input, .form-email textarea
 {
-    -moz-border-radius:0px 0 0 0px; 
-    -webkit-border-radius:0px 0 0 0px; 
+    -moz-border-radius:5px 5px 5px 5px; 
+    -webkit-border-radius:5px 5px 5px 5px; 
     border-radius:5px 5px 5px 5px; 
 }
 .form-email input[type=submit]
@@ -308,21 +308,6 @@ footer
     box-shadow: 0px 6px 8px 2px #656565;
     filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=135, Strength=8);
     background-color:#444b50;
-    /*background: #2b88d9; [> Old browsers <]
-    background: -moz-linear-gradient(45deg, #2b88d9 0%, #207cca 0%, #7db9e8 39%, #207cca 100%); [> FF3.6+ <]
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#2b88d9), color-stop(0%,#207cca), color-stop(39%,#7db9e8), color-stop(100%,#207cca)); [> Chrome,Safari4+ <]
-    background: -webkit-linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> Chrome10+,Safari5.1+ <]
-    background: -o-linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> Opera 11.10+ <]
-    background: -ms-linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> IE10+ <]
-    background: linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> W3C <]
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b88d9', endColorstr='#207cca',GradientType=1 ); [> IE6-9 fallback on horizontal gradient background: #2b88d9; /* Old browsers <]*/
-   /* background: -moz-linear-gradient(45deg, #2b88d9 0%, #207cca 0%, #7db9e8 39%, #207cca 100%); [> FF3.6+ <]
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#2b88d9), color-stop(0%,#207cca), color-stop(39%,#7db9e8), color-stop(100%,#207cca)); [> Chrome,Safari4+ <]
-    background: -webkit-linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> Chrome10+,Safari5.1+ <]
-    background: -o-linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> Opera 11.10+ <]
-    background: -ms-linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> IE10+ <]
-    background: linear-gradient(45deg, #2b88d9 0%,#207cca 0%,#7db9e8 39%,#207cca 100%); [> W3C <]
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b88d9', endColorstr='#207cca',GradientType=1 ); [> IE6-9 fallback on horizontal gradient <]*/
 }
 
 .marge
@@ -363,9 +348,10 @@ footer
     top :-0.1em;
     position : relative;
     width : 100%;
-    height : auto;
+    float : right;
+    height : 100%;
     border:1px solid black;
-    border-left:none;
+    /*border-left:none;*/
     border-right:none;
 }
 .promo-titre
@@ -380,7 +366,8 @@ footer
 {
     background-color:#faf7db;
     width:100%;
-    height:auto;
+    height:100%;
+    min-height : 5em;
     margin-top:-0.3em;
     top:-0.1em;
 }
@@ -503,9 +490,9 @@ footer
     background-color: #faf7db;
     width:100%;
     height:auto;
-    -webkit-border-radius:0px 4px 4px 0px;
-    -moz-border-radius:0px 4px 4px 0px;
-    border-radius: 0px 4px 4px 0px;
+    /*-webkit-border-radius:0px 4px 4px 0px;*/
+    /*-moz-border-radius:0px 4px 4px 0px;*/
+    /*border-radius: 0px 4px 4px 0px;*/
     -moz-box-shadow: 6px 6px 8px 0px #656565;
     -webkit-box-shadow: 6px 6px 8px 0px #656565;
     -o-box-shadow: 6px 6px 8px 0px #656565;
@@ -785,7 +772,6 @@ footer
     height:5em;
     margin-top : -0.5em;
     vertical-align:middle;
-    /*border : 1px solid black;*/
 }
 #logo
 {
@@ -889,14 +875,21 @@ footer
 }
 .marque section:target section
 {
-    display:block;
+    display:inline;
     width:98.5%;
     margin-bottom:-4%;
     margin-top:-1%;
     background:#fff;
 }
+
+.mcontent
+{
+    display:inline-block;
+    position : relative;
+}
 .marque-content
 {
+    display:inline;
     position : relative;
     font-size : 1em;
     margin-top : 0.5em;
@@ -904,12 +897,14 @@ footer
     margin-bottom : 0.2em;
     padding-left : 0.8em;
     text-align : justify;
+    float:left;
     padding-right: 0.8em;
     color : black;
 }
 .marque-content p
 {
-    display : inline-block;
+    display : inline;
+    position : relative;
 }
 .marque-link
 {
@@ -918,22 +913,24 @@ footer
 }
 .marque-img
 {
-    width : 20%;
-    height:15%;
+    width : auto;
+    height:5em;
+    max-width : 11em;
     position : relative;
+    display : inline;
 }
 .marque-img img
 {
+    display:inline;
+    margin-right : 1em;
+    vertical-align : middle;
     min-height: 3em;
-    max-height: 3em;
-    margin-bottom : 0.5em;
+    max-height: 5em;
     width:auto;
-    max-width:10em;
-    padding-left : 1.0em;
-    float :left;
-    position :relative;
-    height : auto;
+    max-width:11em;
+    height:auto;
 }
+
 .vertical img
 {
     display:none;
@@ -949,7 +946,7 @@ footer
 }
 .vertical :target
 {
-    height:400px;
+    height:22em;
     width:97%;
 }
 .vertical section h3 
@@ -1147,7 +1144,6 @@ html
     top:0.5em;
     border-top:1.2em solid transparent;
 }
-
 }
 
 @media screen and (max-width:780px) and ( orientation : landscape)
@@ -1202,8 +1198,6 @@ html
 }
 .futurico-theme .nivoSlider img
 {
-    /*height : 2em;*/
-    /*width:100%;*/
     width:auto;
     min-height : 96px;
     max-height:96px;

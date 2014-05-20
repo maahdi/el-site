@@ -161,6 +161,6 @@ class Marque implements JsonSerializable
             'nomMarque' => $this->nomMarque,
             'content' => $this->content,
             'marqueLien' => $this->marqueLien,
-            'pngUrl' => $this->pngUrl);
+            'srcUrl' => $this->pngUrl);
     }
 }

@@ -38,7 +38,11 @@
                         {%for horaire in horaires%}
                         <tr>
                             <td class="jour">{{ horaire.jour}}</td>
-                            <td>{{ horaire.getMatin('debut')}} à {{ horaire.getMatin('fin')}} - {{ horaire.getAprem('debut')}} à {{ horaire.getAprem('fin')}}</td>
+                            {%if horaire.getFermer%}
+                                <td>{{ horaire.getMatin('debut')}}</td>
+                            {%else%}
+                                <td>{{ horaire.getMatin('debut')}} à {{ horaire.getMatin('fin')}} - {{ horaire.getAprem('debut')}} à {{ horaire.getAprem('fin')}}</td>
+                            {%endif%}
                         </tr>
                         {%endfor%}
                         </table>
